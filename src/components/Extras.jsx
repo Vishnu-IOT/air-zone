@@ -1,0 +1,9 @@
+import {useState} from 'react';import {Link} from 'react-router-dom';import {Star,ChevronLeft,ChevronRight} from 'lucide-react';import {reviews} from '../data/content.js';import Reveal from './Reveal.jsx';
+export function Faq({items}){return <div className="faqlist">{items.map(([q,a])=><details key={q}><summary>{q}</summary><p>{a}</p></details>)}</div>}
+export function Reviews(){const pub=reviews.filter(r=>r.published);const [i,setI]=useState(0);const r=pub[i];
+ return <section className="section container reviews"><Reveal><p className="label">Reviews</p><h2>Trust built through every service.</h2><p className="lead">Every vehicle deserves careful attention. Explore feedback shared by customers about their service experience.</p></Reveal>
+ {!pub.length?<div className="notice" role="status">Verified customer reviews will appear here once added and approved by the business.</div>:
+ <figure className="quote-big"><blockquote>{r.text}</blockquote><figcaption>{r.name}{r.service&&` · ${r.service}`}{r.date&&` · ${r.date}`}{r.rating&&<span className="stars">{Array.from({length:r.rating},(_,k)=><Star key={k} size={14}/>)}</span>}</figcaption>
+ {pub.length>1&&<div className="row"><button className="chip" aria-label="Previous review" onClick={()=>setI((i-1+pub.length)%pub.length)}><ChevronLeft size={16}/></button><button className="chip" aria-label="Next review" onClick={()=>setI((i+1)%pub.length)}><ChevronRight size={16}/></button></div>}</figure>}</section>}
+export function CtaBanner(){return <section className="ctaban"><Reveal><h2>Ready to give your car the care it deserves?</h2><p>Tell us about your vehicle and the service you need. We'll help you understand the next steps.</p>
+ <div className="row center"><Link className="btn" to="/book-a-quote">Book a Quote</Link><Link className="btn ghost" to="/services">Explore Services</Link></div></Reveal></section>}

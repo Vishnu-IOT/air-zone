@@ -1,0 +1,7 @@
+import {Link} from 'react-router-dom';import {ArrowRight} from 'lucide-react';import {motion,useReducedMotion} from 'framer-motion';import {teamMembers} from '../data/team.js';import {Portrait} from './TeamCard.jsx';import Lines from './Lines.jsx';import Reveal from './Reveal.jsx';
+export default function OwnerSection(){const o=teamMembers.find(m=>m.id==='owner');const r=useReducedMotion();if(!o)return null;
+ return <section className="owner-about"><div className="container oa-grid"><motion.div className="oa-frame" initial={r?false:{clipPath:'inset(0 0 100% 0)'}} whileInView={{clipPath:'inset(0 0 0% 0)'}} viewport={{once:true}} transition={{duration:1.1,ease:[.2,.7,.2,1]}}><Portrait m={o}/><span className="oa-tag">{o.designation}</span></motion.div>
+ <div><p className="label">The owner</p><Lines as="h2" lines={['The person behind','Air Zone.']}/>
+  <Reveal delay={.1}><p className="lead">Behind Air Zone Automobile is a commitment to thoughtful vehicle care, clear communication, and attention to the details that matter. Our approach is built around understanding each vehicle's needs and helping customers make informed service decisions.</p>
+  <div className="oa-name"><h3>{o.name}</h3><p className="role">{o.designation}</p>{o.placeholder&&<span className="badge">Placeholder details · confirm before publishing</span>}</div>
+  <p className="lead">{o.bio}</p><Link className="more-link" to="/book-a-quote">Request a quote <ArrowRight size={16}/></Link></Reveal></div></div></section>}

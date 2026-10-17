@@ -1,0 +1,4 @@
+import {Routes,Route} from 'react-router-dom';import {Navbar} from './components/Layout.jsx';import Footer from './components/Footer.jsx';import Splash from './components/Splash.jsx';import Home from './pages/Home.jsx';
+import {Services,ServiceDetails} from './pages/ServicesPages.jsx';import {About,Gallery,Contact,BookQuote,NotFound} from './pages/Other.jsx';
+export default function App(){return <><Splash/><Navbar/><main><Routes><Route path="/" element={<Home/>}/><Route path="/about" element={<About/>}/><Route path="/services" element={<Services/>}/>
+<Route path="/services/:slug" element={<ServiceDetails/>}/><Route path="/gallery" element={<Gallery/>}/><Route path="/contact" element={<Contact/>}/><Route path="/book-a-quote" element={<BookQuote/>}/><Route path="*" element={<NotFound/>}/></Routes></main><Footer/></>}

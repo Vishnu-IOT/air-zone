@@ -1,0 +1,3 @@
+import {teamMembers,showPlaceholders} from '../data/team.js';import TeamCard from './TeamCard.jsx';import Lines from './Lines.jsx';
+export default function TeamSection(){const list=teamMembers.filter(m=>m.id!=='owner'&&(!m.placeholder||showPlaceholders));if(!list.length)return null;
+ return <section className="section container"><p className="label">Our team</p><Lines as="h2" lines={['The people behind','the precision.']}/><p className="lead">Dedicated people, thoughtful service, and attention to every detail.</p><div className="tgrid">{list.map((m,i)=><TeamCard key={m.id} m={m} i={i}/>)}</div></section>}
