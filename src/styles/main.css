@@ -597,7 +597,7 @@ textarea[aria-invalid="true"] {
 }
 .feature {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1.2rem;
   margin-top: 2rem;
 }
@@ -608,7 +608,7 @@ textarea[aria-invalid="true"] {
 }
 .fbig-card a {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   height: 100%;
 }
 .fbig-card .ph,
@@ -624,7 +624,7 @@ textarea[aria-invalid="true"] {
   color: var(--tx2);
 }
 .grid.two {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   margin-top: 0;
 }
 .grid.two .card-img {

@@ -1,10 +1,13 @@
-// EDIT ME: leave empty strings until verified. Empty values are hidden/shown as placeholders.
+// Confirmed contact details (edit here only). Leave whatsapp empty until the owner confirms the number accepts WhatsApp.
 export default {
   name:'Air Zone Automobile',
-  phone:'', email:'', address:'', whatsapp:'', // e.g. '919876543210'
+  developer:{name:'MPeoples Business Solutions',url:''}, // add url to make the credit a link
+  contactPerson:'K. R. Prajith',
+  phone:'9746440740', email:'airzonepkd@gmail.com',
+  address:'BPL, Koottupatha, Pollachi Road, Palakkad, Kerala, India',
+  whatsapp:'', // e.g. '919746440740' once confirmed
   hours:'Opening hours: to be confirmed',
   social:{instagram:'',facebook:''},
-  // Owner-supplied claim from the brand flyer; verify before publishing.
   claims:{years:'20 years of trust'},
   // Set to your backend/form endpoint (e.g. Formspree). Empty = form reports "not connected".
   bookingEndpoint:''

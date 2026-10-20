@@ -7,7 +7,7 @@ async function submitRequest(data){
   const r=await fetch(cfg.bookingEndpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
   if(!r.ok) throw new Error('The server rejected the request. Please try again.');
 }
-export default function Form({quote}){
+export default function Form({quote,contact}){
   const [sp]=useSearchParams();
   const [v,setV]=useState({name:'',phone:'',email:'',make:'',model:'',year:'',service:sp.get('service')||'',date:'',time:'',message:''});
   const [err,setErr]=useState({}),[st,setSt]=useState('idle'),[msg,setMsg]=useState('');
@@ -21,9 +21,9 @@ export default function Form({quote}){
    <input type={type} value={v[k]} onChange={set(k)} aria-invalid={!!err[k]} aria-describedby={err[k]?k+'-e':undefined}/>{err[k]&&<small id={k+'-e'} role="alert">{err[k]}</small>}</label>;
   return <form onSubmit={go} noValidate className="form">
    <F k="name" label="Full name" req/><F k="phone" label="Phone number" type="tel" req/><F k="email" label="Email (optional)" type="email"/>
-   {quote&&<><F k="make" label="Vehicle make"/><F k="model" label="Vehicle model"/><F k="year" label="Year (optional)"/>
+   {(quote||contact)&&<><F k="make" label="Vehicle make"/><F k="model" label="Vehicle model"/>{quote&&<F k="year" label="Year (optional)"/>}
    <label className="field"><span>Service required</span><select value={v.service} onChange={set('service')}><option value="">Select a service</option>{services.map(s=><option key={s.slug} value={s.slug}>{s.title}</option>)}</select></label>
-   <F k="date" label="Preferred date" type="date"/><F k="time" label="Preferred time" type="time"/></>}
+   {quote&&<><F k="date" label="Preferred date" type="date"/><F k="time" label="Preferred time" type="time"/></>}</>}
    <label className="field full"><span>{quote?'Additional details':'Message *'}</span><textarea rows="4" value={v.message} onChange={set('message')} aria-invalid={!!err.message}/>{err.message&&<small role="alert">{err.message}</small>}</label>
    {st==='fail'&&<div className="notice bad full" role="alert">{msg}</div>}
    <button className="btn full" disabled={st==='loading'}>{st==='loading'?'Sending…':quote?'Request a Quote':'Send Message'}</button></form>}

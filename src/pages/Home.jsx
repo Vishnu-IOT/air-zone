@@ -3,13 +3,18 @@ import { motion, useReducedMotion } from "framer-motion";
 import Reveal from "../components/Reveal.jsx";
 import ServiceCard from "../components/ServiceCard.jsx";
 import SmartImage from "../components/SmartImage.jsx";
-import { Faq, Reviews } from "../components/Extras.jsx";
+import { Faq, Reviews, CtaBanner } from "../components/Extras.jsx";
 import AboutCompany from "../components/AboutCompany.jsx";
 import Intro from "../components/Intro.jsx";
 import CarFeature from "../components/CarFeature.jsx";
 import TeamSection from "../components/TeamSection.jsx";
 import { services } from "../data/services.js";
 import { homeFaqs, whyPoints } from "../data/content.js";
+import Lines from "../components/Lines.jsx";
+import { ArrowUpRight } from "lucide-react";
+const pick = (s) => services.find((x) => x.slug === s);
+const big = pick("ac-repair");
+const rest = ["general-service","diagnostics","engine-performance","brakes","preventive"].map(pick).filter(Boolean);
 const steps = [
   ["Request an appointment", "Send a quote request online."],
   ["Share details", "Tell us your vehicle and the service you need."],
@@ -46,7 +51,7 @@ export default function Home() {
           muted
           playsInline
           preload="auto"
-          poster="/images/hero/hero.jpg"
+          poster="/images/hero/hero.png"
         >
           <source src="/images/hero/hero.mp4" type="video/mp4" />
           Your browser does not support the video element.
@@ -89,39 +94,41 @@ export default function Home() {
         </div>
       </div>
       <AboutCompany />
-      <Intro />
-      <CarFeature />
       <TeamSection />
-      <section className="section container">
+      <Intro />
+      {/* <CarFeature /> */}
+      <section className="section container fs fs-carfeat">
         <Reveal>
           <p className="label">Featured services</p>
-          <h2>Engineered for every drive.</h2>
+          {/* <Lines as="h2" lines={["Precision care for", "every drive."]} /> */}
+          <Lines as="h2" lines={["Precision care for", "every drive."]} />
+          <p className="lead">From scheduled maintenance to specialist diagnostics and AC repair, explore the services designed to help care for your vehicle.</p>
         </Reveal>
-        <div className="feature">
-          <Reveal className="fbig-card">
-            <Link to={"/services/" + services[3].slug}>
-              <SmartImage src={services[3].image} alt={services[3].title} />
-              <div>
-                <span className="label">Signature service</span>
-                <h3>{services[3].title}</h3>
-                <p>{services[3].overview}</p>
-                <span className="more">Explore service →</span>
+        <div className="fs-grid">
+          <Reveal className="fs-big">
+            <Link to={"/services/" + big.slug} data-cursor="View">
+              <SmartImage src={big.image} alt={big.title} />
+              <div className="fs-over">
+                <span className="label">Signature · {big.category}</span>
+                <h3>{big.title}</h3>
+                <p>{big.short}</p>
+                <span className="more">Explore service <ArrowUpRight size={16} /></span>
               </div>
             </Link>
           </Reveal>
-          <div className="grid two">
-            {[services[0], services[2], services[4], services[5]].map(
-              (s, i) => (
-                <ServiceCard key={s.slug} s={s} i={i} />
-              ),
-            )}
-          </div>
+          <ol className="fs-list">
+            {rest.map((s, i) => (
+              <Reveal as="li" key={s.slug} delay={i * 0.07}>
+                <Link to={"/services/" + s.slug} data-cursor="View">
+                  <SmartImage src={s.image} alt={s.title} />
+                  <div><span className="label">0{i + 2} · {s.category}</span><h3>{s.title}</h3><p>{s.short}</p></div>
+                  <ArrowUpRight size={18} />
+                </Link>
+              </Reveal>
+            ))}
+          </ol>
         </div>
-        <div className="row center">
-          <Link className="btn ghost" to="/services">
-            View all services
-          </Link>
-        </div>
+        <div className="row center"><Link className="btn ghost" to="/services">View all services</Link></div>
       </section>
       <section className="why">
         <div className="container section">
@@ -169,6 +176,7 @@ export default function Home() {
         </Reveal>
         <Faq items={homeFaqs} />
       </section>
+      <CtaBanner />
     </>
   );
 }
