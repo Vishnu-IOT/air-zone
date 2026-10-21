@@ -33,7 +33,7 @@ export default function CarFeature() {
         <motion.div
           initial={r ? false : { clipPath: "inset(0 100% 0 0)" }}
           whileInView={{ clipPath: "inset(0 0% 0 0)" }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px -12% 0px" }}
           transition={{ duration: 1.4, ease: [0.2, 0.7, 0.2, 1] }}
         >
           <SmartImage

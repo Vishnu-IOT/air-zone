@@ -49,7 +49,7 @@ dt {
     width: min(1240px, 100% - 2rem);
   }
   .section {
-    padding: clamp(2.5rem, 8vw, 4rem) 0;
+    padding: clamp(5rem, 8vw, 4rem) 0;
   }
   .nav-in {
     gap: 1rem;

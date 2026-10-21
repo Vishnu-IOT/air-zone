@@ -30,7 +30,7 @@ function Mask({ src, alt, fb, dir = "left", className = "" }) {
             }
       }
       whileInView={{ clipPath: "inset(0 0 0 0)" }}
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "0px 0px -12% 0px" }}
       transition={{ duration: 1.1, ease: [0.2, 0.7, 0.2, 1] }}
     >
       <SmartImage src={src} alt={alt} fallback={fb} />
@@ -64,7 +64,7 @@ export function AboutHero() {
         </div>
         <Mask
           className="bs-wide"
-          src="/images/about/about-hero.webp"
+          src="/images/gallery/20.png"
           fb="/images/about/about-az.png"
           alt="Luxury car in a dark studio (illustrative)"
         />

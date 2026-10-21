@@ -8,23 +8,32 @@ import AboutCompany from "../components/AboutCompany.jsx";
 import Intro from "../components/Intro.jsx";
 import CarFeature from "../components/CarFeature.jsx";
 import TeamSection from "../components/TeamSection.jsx";
+import BrandCarousel from "../components/BrandCarousel.jsx";
 import { services } from "../data/services.js";
 import { homeFaqs, whyPoints } from "../data/content.js";
 import Lines from "../components/Lines.jsx";
 import { ArrowUpRight } from "lucide-react";
 const pick = (s) => services.find((x) => x.slug === s);
 const big = pick("ac-repair");
-const rest = ["general-service","diagnostics","engine-performance","brakes","preventive"].map(pick).filter(Boolean);
-const steps = [
-  ["Request an appointment", "Send a quote request online."],
-  ["Share details", "Tell us your vehicle and the service you need."],
-  [
-    "Inspection & estimate",
-    "Receive findings and an estimate after assessment.",
-  ],
-  ["Approve the work", "Recommended work proceeds only once you agree."],
-  ["Collect your vehicle", "Pick up after the service is complete."],
-];
+const rest = [
+  "general-service",
+  "diagnostics",
+  "engine-performance",
+  "brakes",
+  "preventive",
+]
+  .map(pick)
+  .filter(Boolean);
+// const steps = [
+//   ["Request an appointment", "Send a quote request online."],
+//   ["Share details", "Tell us your vehicle and the service you need."],
+//   [
+//     "Inspection & estimate",
+//     "Receive findings and an estimate after assessment.",
+//   ],
+//   ["Approve the work", "Recommended work proceeds only once you agree."],
+//   ["Collect your vehicle", "Pick up after the service is complete."],
+// ];
 export default function Home() {
   const r = useReducedMotion();
   const a = (d) =>
@@ -95,6 +104,7 @@ export default function Home() {
       </div>
       <AboutCompany />
       <TeamSection />
+      <BrandCarousel />
       <Intro />
       {/* <CarFeature /> */}
       <section className="section container fs fs-carfeat">
@@ -102,7 +112,10 @@ export default function Home() {
           <p className="label">Featured services</p>
           {/* <Lines as="h2" lines={["Precision care for", "every drive."]} /> */}
           <Lines as="h2" lines={["Precision care for", "every drive."]} />
-          <p className="lead">From scheduled maintenance to specialist diagnostics and AC repair, explore the services designed to help care for your vehicle.</p>
+          <p className="lead">
+            From scheduled maintenance to specialist diagnostics and AC repair,
+            explore the services designed to help care for your vehicle.
+          </p>
         </Reveal>
         <div className="fs-grid">
           <Reveal className="fs-big">
@@ -112,7 +125,9 @@ export default function Home() {
                 <span className="label">Signature · {big.category}</span>
                 <h3>{big.title}</h3>
                 <p>{big.short}</p>
-                <span className="more">Explore service <ArrowUpRight size={16} /></span>
+                <span className="more">
+                  Explore service <ArrowUpRight size={16} />
+                </span>
               </div>
             </Link>
           </Reveal>
@@ -121,14 +136,24 @@ export default function Home() {
               <Reveal as="li" key={s.slug} delay={i * 0.07}>
                 <Link to={"/services/" + s.slug} data-cursor="View">
                   <SmartImage src={s.image} alt={s.title} />
-                  <div><span className="label">0{i + 2} · {s.category}</span><h3>{s.title}</h3><p>{s.short}</p></div>
+                  <div>
+                    <span className="label">
+                      0{i + 2} · {s.category}
+                    </span>
+                    <h3>{s.title}</h3>
+                    <p>{s.short}</p>
+                  </div>
                   <ArrowUpRight size={18} />
                 </Link>
               </Reveal>
             ))}
           </ol>
         </div>
-        <div className="row center"><Link className="btn ghost" to="/services">View all services</Link></div>
+        <div className="row center">
+          <Link className="btn ghost" to="/services">
+            View all services
+          </Link>
+        </div>
       </section>
       <section className="why">
         <div className="container section">
@@ -151,7 +176,7 @@ export default function Home() {
         </div>
       </section>
       <Reviews />
-      <section className="section container">
+      {/* <section className="section container">
         <Reveal>
           <p className="label">Process</p>
           <h2>How it works</h2>
@@ -168,7 +193,7 @@ export default function Home() {
         <p className="note">
           Adapt to the actual business process before publication.
         </p>
-      </section>
+      </section> */}
       <section className="section container narrow">
         <Reveal>
           <p className="label">FAQ</p>

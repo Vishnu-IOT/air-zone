@@ -30,7 +30,7 @@ export default function TeamCard({ m, i = 0 }) {
       className="tcard"
       initial={r ? false : { opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "0px 0px -12% 0px" }}
       transition={{ duration: 0.7, delay: i * 0.1 }}
     >
       <span className="pill">{m.category}</span>

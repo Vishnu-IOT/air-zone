@@ -12,42 +12,74 @@ import {
   factors,
   disclaimer,
 } from "../data/services.js";
+
+const steps = [
+  ["Request an appointment", "Send a quote request online."],
+  ["Share details", "Tell us your vehicle and the service you need."],
+  [
+    "Inspection & estimate",
+    "Receive findings and an estimate after assessment.",
+  ],
+  ["Approve the work", "Recommended work proceeds only once you agree."],
+  ["Collect your vehicle", "Pick up after the service is complete."],
+];
+
 export function Services() {
   const cats = ["All", ...new Set(services.map((s) => s.category))];
   const [c, setC] = useState("All");
   const list = services.filter((s) => c === "All" || s.category === c);
   return (
     <>
-    <section className="page">
-      <div className="container section">
-        <p className="label">Services</p>
-        <h1>Our services</h1>
-        <p className="lead">
-          From scheduled servicing to diagnostics and AC repair. Durations and
-          prices are indicative and confirmed after assessment, since luxury and
-          premium vehicles can need different parts, fluids and procedures.
-        </p>
-        <div className="row" role="group" aria-label="Filter services">
-          {cats.map((x) => (
-            <button
-              key={x}
-              className={"chip" + (x === c ? " on" : "")}
-              aria-pressed={x === c}
-              onClick={() => setC(x)}
-            >
-              {x}
-            </button>
-          ))}
+      <section className="page">
+        <div className="container section">
+          <p className="label">Services</p>
+          <h1>Our services</h1>
+          <p className="lead">
+            From scheduled servicing to diagnostics and AC repair. Durations and
+            prices are indicative and confirmed after assessment, since luxury
+            and premium vehicles can need different parts, fluids and
+            procedures.
+          </p>
+          <div className="row" role="group" aria-label="Filter services">
+            {cats.map((x) => (
+              <button
+                key={x}
+                className={"chip" + (x === c ? " on" : "")}
+                aria-pressed={x === c}
+                onClick={() => setC(x)}
+              >
+                {x}
+              </button>
+            ))}
+          </div>
+          <div className="grid">
+            {list.map((s, i) => (
+              <ServiceCard key={s.slug} s={s} i={i} />
+            ))}
+          </div>
+          <p className="note">{disclaimer}</p>
+
+          <section className="section container">
+            <Reveal>
+              <p className="label">Process</p>
+              <h2>How it works</h2>
+            </Reveal>
+            <ol className="steps five">
+              {steps.map(([t, d], i) => (
+                <Reveal as="li" key={t} delay={i * 0.07}>
+                  <b>0{i + 1}</b>
+                  <h3>{t}</h3>
+                  <p>{d}</p>
+                </Reveal>
+              ))}
+            </ol>
+            <p className="note">
+              Adapt to the actual business process before publication.
+            </p>
+          </section>
         </div>
-        <div className="grid">
-          {list.map((s, i) => (
-            <ServiceCard key={s.slug} s={s} i={i} />
-          ))}
-        </div>
-        <p className="note">{disclaimer}</p>
-      </div>
-    </section>
-    <CtaBanner />
+      </section>
+      <CtaBanner />
     </>
   );
 }

@@ -90,7 +90,7 @@ export default function Footer() {
         <div className="copy">
           <span>© {new Date().getFullYear()} {cfg.name}. All rights reserved.</span>
           <span>
-            Built &amp; developed by{" "}
+            Designed &amp; developed by{" "}
             {cfg.developer.url ? (
               <a href={cfg.developer.url} target="_blank" rel="noopener noreferrer">{cfg.developer.name}</a>
             ) : (

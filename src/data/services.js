@@ -238,7 +238,7 @@ export const services = [
   S({
     slug: "brakes",
     title: "Brake Inspection & Repair",
-    image: "car-service.jpg",
+    image: "Brake-Inspection.jpg",
     category: "Safety",
     cta: "Book Brake Service",
     duration: "2–4 hours",
@@ -280,7 +280,7 @@ export const services = [
   S({
     slug: "suspension-steering",
     title: "Suspension & Steering Inspection",
-    image: "car-service.jpg",
+    image: "suspension.png",
     category: "Safety",
     cta: "Book Suspension Check",
     duration: "2–5 hours",
@@ -322,7 +322,7 @@ export const services = [
   S({
     slug: "battery-electrical",
     title: "Battery & Electrical System Service",
-    image: "car-service.jpg",
+    image: "battery.webp",
     category: "Electrical",
     cta: "Book Electrical Check",
     duration: "1–3 hours",
@@ -367,7 +367,7 @@ export const services = [
   S({
     slug: "engine-performance",
     title: "Engine Performance Inspection",
-    image: "car-service.jpg",
+    image: "engine inspection.webp",
     category: "Servicing",
     cta: "Book Engine Inspection",
     duration: "2–4 hours",
@@ -405,7 +405,7 @@ export const services = [
   S({
     slug: "preventive",
     title: "Preventive Maintenance",
-    image: "car-service.jpg",
+    image: "preventative.webp",
     category: "Servicing",
     cta: "Plan Maintenance",
     duration: "Varies by plan",

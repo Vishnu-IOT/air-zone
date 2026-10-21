@@ -489,7 +489,8 @@
 
 /* Intro (next to about) */
 .intro2 {
-  padding: clamp(4rem, 8vw, 7rem) 0 clamp(5rem, 9vw, 8rem);
+  /* padding: clamp(4rem, 5vw, 4rem) 0 clamp(4rem, 5vw, 4rem); */
+  padding: clamp(1.5rem, 2vw, 2rem) 0;
   background: radial-gradient(ellipse at 50% 60%, #16181c, #050505 70%);
   border-bottom: 1px solid var(--bd);
   overflow: hidden;
@@ -593,7 +594,7 @@
   transform: translateX(-50%);
   width: min(100%, 1500px);
   height: auto;
-  opacity: 0.55;
+  opacity: 0.45;
   pointer-events: none;
   user-select: none;
   z-index: -1;
@@ -602,7 +603,7 @@
 }
 
 .site-footer .fgrid {
-  margin-bottom: clamp(6rem, 20vw, 16rem);
+  margin-bottom: clamp(6rem, 12vw, 8rem);
 }
 
 .site-footer .copy {
@@ -647,5 +648,10 @@
 
   .gp {
     min-height: 0;
+  }
+
+  .site-footer__bg {
+    bottom: 8%;
+    opacity: 1;
   }
 }

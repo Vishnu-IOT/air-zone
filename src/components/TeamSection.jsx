@@ -1,8 +1,84 @@
-import {useRef} from 'react';import {motion,useReducedMotion} from 'framer-motion';import {ChevronLeft,ChevronRight} from 'lucide-react';import {teamMembers,showPlaceholders} from '../data/team.js';import {Portrait} from './TeamCard.jsx';import Lines from './Lines.jsx';
-export default function TeamSection(){const r=useReducedMotion();const ref=useRef(null);const list=teamMembers.filter(m=>m.id!=='owner'&&(!m.placeholder||showPlaceholders));if(!list.length)return null;
- const go=d=>ref.current&&ref.current.scrollBy({left:d*ref.current.clientWidth*.7,behavior:r?'auto':'smooth'});
- return <section className="section container team2"><div className="t2-head"><div><p className="label">Our team</p><Lines as="h2" lines={['The people behind','the precision.']}/><p className="lead">Dedicated people, thoughtful service, and attention to every detail.</p></div>
- <div className="row"><button className="chip" aria-label="Previous team members" onClick={()=>go(-1)}><ChevronLeft size={16}/></button><button className="chip" aria-label="Next team members" onClick={()=>go(1)}><ChevronRight size={16}/></button></div></div>
- <ul className="t2-track" ref={ref} tabIndex={0} aria-label="Team members, scroll horizontally">{list.map((m,i)=><li key={m.id}><div className="lanyard"><i className="thread"/><i className="clip"/>
-  <motion.article className="idcard" style={{transformOrigin:'50% 0'}} animate={r?{}:{rotate:[-1.1,1.1,-1.1]}} transition={{duration:6+(i%3),repeat:Infinity,ease:'easeInOut'}} whileHover={{rotate:0}}>
-  <span className="slot" aria-hidden="true"/><div className="idphoto"><Portrait m={m}/></div><h3>{m.name}</h3><p className="role">{m.designation}</p>{m.placeholder&&<span className="badge">Placeholder</span>}</motion.article></div></li>)}</ul></section>}
+import Reveal from "./Reveal.jsx";
+import { useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { teamMembers, showPlaceholders } from "../data/team.js";
+import { Portrait } from "./TeamCard.jsx";
+import Lines from "./Lines.jsx";
+export default function TeamSection() {
+  const r = useReducedMotion();
+  const ref = useRef(null);
+  const list = teamMembers.filter(
+    (m) => m.id !== "owner" && (!m.placeholder || showPlaceholders),
+  );
+  if (!list.length) return null;
+  const go = (d) =>
+    ref.current &&
+    ref.current.scrollBy({
+      left: d * ref.current.clientWidth * 0.7,
+      behavior: r ? "auto" : "smooth",
+    });
+  return (
+    <section className="section container team2">
+      <div className="t2-head">
+        <div>
+          <p className="label">Our team</p>
+          <Lines as="h2" lines={["The people behind", "the precision."]} />
+          <p className="lead">
+            Dedicated people, thoughtful service, and attention to every detail.
+          </p>
+        </div>
+        <div className="row">
+          <button
+            className="chip"
+            aria-label="Previous team members"
+            onClick={() => go(-1)}
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <button
+            className="chip"
+            aria-label="Next team members"
+            onClick={() => go(1)}
+          >
+            <ChevronRight size={16} />
+          </button>
+        </div>
+      </div>
+      <ul
+        className="t2-track"
+        ref={ref}
+        tabIndex={0}
+        aria-label="Team members, scroll horizontally"
+      >
+        {list.map((m, i) => (
+          <Reveal as="li" key={m.id} delay={(i % 4) * 0.08}>
+            <div className="lanyard">
+              <i className="thread" />
+              <i className="clip" />
+              <motion.article
+                className="idcard"
+                style={{ transformOrigin: "50% 0" }}
+                animate={r ? {} : { rotate: [-1.1, 1.1, -1.1] }}
+                transition={{
+                  duration: 6 + (i % 3),
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                whileHover={{ rotate: 0 }}
+              >
+                <span className="slot" aria-hidden="true" />
+                <div className="idphoto">
+                  <Portrait m={m} />
+                </div>
+                <h3>{m.name}</h3>
+                <p className="role">{m.designation}</p>
+                {m.placeholder && <span className="badge">Placeholder</span>}
+              </motion.article>
+            </div>
+          </Reveal>
+        ))}
+      </ul>
+    </section>
+  );
+}

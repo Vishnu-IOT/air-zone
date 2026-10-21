@@ -14,7 +14,7 @@ export default function Contact() {
       <section className="chero">
         <SmartImage
           className="chero-bg"
-          src="/images/about/about-az.png"
+          src="/images/hero/contact.png"
           alt=""
           pos="center 55%"
         />

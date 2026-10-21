@@ -12,7 +12,7 @@ export default function AboutCompany() {
         className="aboutco-bgimg"
         initial={r ? false : { opacity: 0, scale: 1.06 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "0px 0px -12% 0px" }}
         transition={{ duration: 1.3 }}
       >
         <SmartImage src="/images/about/about-az.png" alt="Luxury car in the Air Zone studio" pos="72% center" />

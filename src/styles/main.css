@@ -86,9 +86,9 @@ h3 {
 .section {
   padding: clamp(3rem, 8vw, 6rem) 0;
 }
-.page {
+/* .page {
   padding-top: 8rem;
-}
+} */
 .row {
   display: flex;
   flex-wrap: wrap;

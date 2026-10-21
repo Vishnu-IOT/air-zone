@@ -28,7 +28,7 @@ export default function Lines({ lines, as: T = "h2", className = "" }) {
           className="line"
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-40px" }}
+          viewport={{ once: true, margin: "0px 0px -12% 0px" }}
         >
           <motion.span variants={inner(i)}>{l}</motion.span>
         </motion.span>

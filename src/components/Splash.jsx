@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 // Shows on every page load/refresh. The panel wipes away from bottom to top.
-export default function Splash() {
+export default function Splash({ onLeave }) {
   const r = useReducedMotion();
   const [show, setShow] = useState(true);
   useEffect(() => {
-    const t = setTimeout(() => setShow(false), r ? 400 : 1900);
+    const t = setTimeout(() => { setShow(false); onLeave && onLeave(); }, r ? 400 : 1900);
     return () => clearTimeout(t);
-  }, [r]);
+  }, [r, onLeave]);
   return (
     <AnimatePresence>
       {show && (
@@ -15,7 +15,7 @@ export default function Splash() {
           className="splash"
           exit={{ y: "-100%" }}
           transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] }}
-          onClick={() => setShow(false)}
+          onClick={() => { setShow(false); onLeave && onLeave(); }}
           role="presentation"
         >
           <div className="splash-mid">
