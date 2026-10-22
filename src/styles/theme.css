@@ -1,0 +1,416 @@
+/* ===== Primary colour #0075fb ===== (loaded last; edit the variables to retheme) */
+:root {
+  --primary: #0075fb;
+  --primary-hi: #3b97ff;
+  --primary-lo: #0058c2;
+  --primary-soft: rgba(0, 117, 251, 0.14);
+  --primary-glow: rgba(0, 117, 251, 0.42);
+  --focus: #7dbcff;
+}
+html {
+  scroll-behavior: auto !important;
+  /* scrollbar-color: var(--primary) #0a0b0d; */
+}
+::selection {
+  background: var(--primary);
+  color: #fff;
+}
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+/* Buttons */
+.btn,
+.bs .btn {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 8px 24px -10px var(--primary-glow) !important;
+}
+.btn:hover,
+.bs .btn:hover {
+  background: var(--primary-hi);
+  border-color: var(--primary-hi);
+  color: #fff;
+  box-shadow: 0 10px 34px -6px var(--primary-glow) !important;
+}
+.btn.ghost,
+.bs .btn.ghost {
+  background: transparent;
+  color: var(--tx);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: none !important;
+}
+.btn.ghost:hover,
+.bs .btn.ghost:hover {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: #fff;
+}
+.circ-cta i {
+  border-color: var(--primary);
+  color: #fff;
+}
+.circ-cta:hover i {
+  background: var(--primary);
+  color: #fff;
+}
+.more-link,
+.more {
+  color: var(--primary-hi);
+}
+.more-link {
+  border-color: var(--primary);
+}
+/* Accents */
+.label,
+.bs .label {
+  color: var(--primary-hi);
+}
+.nav-links a:hover,
+.nav-links a.active {
+  border-color: var(--primary);
+  color: #fff;
+}
+.mobile-menu a.active:not(.btn) {
+  color: var(--primary-hi);
+}
+.chip.on {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.chip:hover {
+  border-color: var(--primary);
+}
+.card:hover,
+.fs-big:hover,
+.rv-card.small:hover,
+.rv-card.small:focus-visible,
+.idcard:hover,
+.gp:hover,
+.item:hover,
+.step:hover {
+  border-color: var(--primary) !important;
+  box-shadow:
+    0 0 0 1px var(--primary-soft),
+    0 18px 40px -18px var(--primary-glow) !important;
+}
+.fs-list a:hover {
+  background: var(--primary-soft);
+}
+.fs-list svg,
+.faq-q button svg {
+  color: var(--primary-hi);
+}
+.rv-btn:hover,
+.lb-nav:hover,
+.lb-x:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.rv h2 em {
+  color: var(--primary-hi);
+}
+.stars {
+  color: var(--primary-hi);
+}
+.av {
+  background: var(--primary);
+  color: #fff;
+}
+.gp i {
+  color: var(--primary-hi);
+}
+.gp i svg {
+  stroke: var(--primary-hi);
+}
+.dropnum,
+.bignum {
+  color: var(--primary-hi);
+}
+.bs {
+  --bs-silver: var(--primary-hi);
+}
+.bs-quote {
+  border-left-color: var(--primary);
+}
+.dot,
+.bs .dot {
+  border-color: var(--primary);
+  color: #fff;
+}
+.tl-line,
+.bs .tl-line {
+  background: linear-gradient(90deg, var(--primary), transparent);
+}
+.sq {
+  background: var(--primary);
+}
+.pts li:before {
+  color: var(--primary-hi);
+}
+.item .n {
+  border-color: var(--primary);
+  color: var(--primary-hi);
+}
+.faq-item.open .faq-q button {
+  color: var(--primary-hi);
+}
+.clist svg,
+.fgrid svg {
+  color: var(--primary-hi);
+}
+.fgrid a:hover,
+.copy a:hover {
+  color: var(--primary-hi);
+}
+.fgrid .flink {
+  color: var(--primary-hi);
+  border-color: var(--primary);
+}
+.panel b {
+  color: #fff;
+}
+.crumbs a:hover {
+  color: var(--primary-hi);
+}
+.tick li:before,
+.check svg {
+  background: var(--primary);
+  color: var(--primary-hi);
+}
+.badge {
+  border-color: var(--primary);
+  color: var(--primary-hi);
+}
+/* Glows & gradients */
+.sweep-beam {
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(90, 170, 255, 0.2) 50%,
+    transparent
+  ) !important;
+}
+.ctaban {
+  background: radial-gradient(
+    ellipse at 50% 130%,
+    rgba(0, 117, 251, 0.38),
+    var(--bg) 62%
+  ) !important;
+  border-top: 1px solid rgba(0, 117, 251, 0.35);
+}
+.bs .ctaban {
+  background: radial-gradient(
+    ellipse at 50% 130%,
+    rgba(0, 117, 251, 0.3),
+    #080808 62%
+  ) !important;
+}
+.intro2 {
+  background: radial-gradient(
+    ellipse at 50% 70%,
+    rgba(0, 117, 251, 0.12),
+    #000 62%
+  ) !important;
+}
+.hero:after {
+  background:
+    linear-gradient(90deg, var(--bg) 5%, transparent 70%),
+    linear-gradient(0deg, var(--bg), transparent 40%),
+    radial-gradient(
+      ellipse at 80% 90%,
+      rgba(0, 117, 251, 0.16),
+      transparent 60%
+    );
+}
+.splash-line {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary),
+    transparent
+  ) !important;
+  height: 2px;
+}
+.wipe {
+  background: linear-gradient(180deg, #05070b, #06111f) !important;
+  border-top: 2px solid var(--primary);
+}
+.cursor-in {
+  border-color: var(--primary-hi);
+  background: rgba(0, 117, 251, 0.2);
+}
+.cursor-in.big {
+  background: var(--primary);
+  border-color: transparent;
+}
+.cursor-in em {
+  color: #fff;
+}
+.nav.scrolled {
+  border-bottom-color: rgba(0, 117, 251, 0.28);
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  outline: 0;
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+.track span:hover,
+.bc-item:hover {
+  color: var(--primary-hi);
+}
+/* Scroll progress bar */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 120;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--primary), #7dbcff);
+  box-shadow: 0 0 14px var(--primary-glow);
+  pointer-events: none;
+}
+/* Floating action buttons */
+.fab-stack {
+  position: fixed;
+  right: max(0.9rem, env(safe-area-inset-right));
+  bottom: max(0.9rem, env(safe-area-inset-bottom));
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+.fab {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  box-shadow: 0 10px 28px -8px rgba(0, 0, 0, 0.7);
+  isolation: isolate;
+}
+.fab::after {
+  content: attr(data-tip);
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translate(8px, -50%);
+  padding: 0.35rem 0.7rem;
+  white-space: nowrap;
+  background: #0b0d11;
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  font:
+    600 0.72rem Inter,
+    sans-serif;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s;
+}
+.fab:hover::after,
+.fab:focus-visible::after {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+.fab-wa {
+  background: linear-gradient(145deg, #2fe07a, #17b955);
+}
+.fab-call {
+  background: linear-gradient(145deg, var(--primary-hi), var(--primary-lo));
+}
+.fab-top {
+  background: rgba(10, 12, 16, 0.88);
+  backdrop-filter: blur(10px);
+  width: 48px;
+  height: 48px;
+}
+.fab-top svg:not(.ring) {
+  position: relative;
+}
+.ring {
+  position: absolute;
+  inset: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  transform: rotate(-90deg);
+}
+.ring-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.14);
+  stroke-width: 3;
+}
+.ring-fg {
+  fill: none;
+  stroke: var(--primary-hi);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  z-index: -1;
+  animation: ripple 2.4s ease-out infinite;
+}
+.fab-wa .pulse {
+  background: rgba(37, 211, 102, 0.55);
+}
+.fab-call .pulse {
+  background: var(--primary-glow);
+  animation-delay: 1.2s;
+}
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+.ph-ico {
+  display: grid;
+  place-items: center;
+}
+body:has(.nav.open) .fab-stack {
+  display: none;
+}
+@media (max-width: 560px) {
+  .fab {
+    width: 48px;
+    height: 48px;
+  }
+  .fab-top {
+    width: 44px;
+    height: 44px;
+  }
+  .fab::after {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pulse {
+    display: none;
+  }
+}

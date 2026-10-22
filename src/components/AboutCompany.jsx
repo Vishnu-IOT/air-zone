@@ -13,7 +13,7 @@ export default function AboutCompany() {
         initial={r ? false : { opacity: 0, scale: 1.06 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "0px 0px -12% 0px" }}
-        transition={{ duration: 1.3 }}
+        transition={{ duration: 1.9 }}
       >
         <SmartImage src="/images/about/about-az.png" alt="Luxury car in the Air Zone studio" pos="72% center" />
       </motion.div>
@@ -24,7 +24,7 @@ export default function AboutCompany() {
         <div className="aboutco-bmw">
           <img className="bmw-logo" src="/images/hero/bmw.png" alt="" />
         </div>
-        <Reveal delay={0.15}>
+        <Reveal variant="left" delay={0.15}>
           <p id="aboutco-h">
             Air Zone Automobile is a service centre for luxury and premium vehicles, focused on routine servicing,
             computer diagnostics and car AC repair. Each vehicle is inspected carefully, and findings are explained

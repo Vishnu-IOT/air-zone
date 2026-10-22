@@ -5,7 +5,7 @@ const inner = (i) => ({
   hidden: { y: "110%" },
   show: {
     y: 0,
-    transition: { duration: 0.8, delay: i * 0.12, ease: [0.2, 0.7, 0.2, 1] },
+    transition: { duration: 1.25, delay: i * 0.2, ease: [0.2, 0.7, 0.2, 1] },
   },
 });
 export default function Lines({ lines, as: T = "h2", className = "" }) {

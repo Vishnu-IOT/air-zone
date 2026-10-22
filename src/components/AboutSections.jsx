@@ -31,7 +31,7 @@ function Mask({ src, alt, fb, dir = "left", className = "" }) {
       }
       whileInView={{ clipPath: "inset(0 0 0 0)" }}
       viewport={{ once: true, margin: "0px 0px -12% 0px" }}
-      transition={{ duration: 1.1, ease: [0.2, 0.7, 0.2, 1] }}
+      transition={{ duration: 1.7, ease: [0.2, 0.7, 0.2, 1] }}
     >
       <SmartImage src={src} alt={alt} fallback={fb} />
     </motion.div>
@@ -50,7 +50,7 @@ export function AboutHero() {
             <p className="label">About Air Zone Automobile</p>
             <Lines as="h1" lines={["Vehicle care,", "done carefully."]} />
           </div>
-          <Reveal className="bs-lede">
+          <Reveal variant="right" className="bs-lede">
             <p className="dropcap">
               Air Zone Automobile focuses on servicing, computer diagnostics and
               car AC repair for luxury and premium vehicles. We treat every
@@ -110,7 +110,7 @@ export function Approach() {
       <div className="container">
         <SecHead n="02" title="Our approach" tag="Care process" />
         <Lines as="h2" lines={["Our approach to", "automotive care"]} />
-        <Reveal>
+        <Reveal variant="blur">
           <p className="lead narrow">
             Every vehicle has its own service requirements. Our approach begins
             with understanding the vehicle, listening to the customer's
@@ -121,7 +121,7 @@ export function Approach() {
         </Reveal>
         <div className="bs-cols">
           {A.map(([n, t, st, d, sp], i) => (
-            <Reveal as="article" key={n} delay={i * 0.1}>
+            <Reveal variant="flip" as="article" key={n} delay={i * 0.1}>
               <span className="stage">{st}</span>
               <div className="bignum">{n}</div>
               <h3>{t}</h3>
@@ -185,7 +185,7 @@ export function VehicleSpecific() {
               lines={["Every vehicle has its", "own requirements."]}
             />
           </div>
-          <Reveal className="bs-lede">
+          <Reveal variant="left" className="bs-lede">
             <p className="lead">
               Vehicle maintenance is not one-size-fits-all. Oil specifications,
               replacement intervals, diagnostic procedures, components, and
@@ -217,7 +217,7 @@ export function VehicleSpecific() {
           </div>
           <div className="items">
             {K.map(([t, tag, d], i) => (
-              <Reveal as="div" className="item" key={t} delay={i * 0.08}>
+              <Reveal variant="right" as="div" className="item" key={t} delay={i * 0.08}>
                 <header>
                   <h3>
                     <span className="n">0{i + 1}</span>
@@ -270,7 +270,7 @@ export function Inspection() {
         <p className="bs-ital">
           “Trust is built when every recommendation has a reason.”
         </p>
-        <Reveal>
+        <Reveal variant="blur">
           <p className="lead narrow">
             A clear service process helps customers understand their vehicle's
             needs. Inspection findings, recommended repairs, and potential
@@ -280,7 +280,7 @@ export function Inspection() {
         </Reveal>
         <div className="bs-steps">
           {S.map(([n, t, tag, d, out], i) => (
-            <Reveal as="article" className="step" key={n} delay={i * 0.12}>
+            <Reveal variant="zoom" as="article" className="step" key={n} delay={i * 0.12}>
               <header>
                 <span>Step {n}</span>
                 <span>{tag}</span>
@@ -330,7 +330,7 @@ export function Preventive() {
               as="h2"
               lines={["Care today.", "Prepare for every drive."]}
             />
-            <Reveal>
+            <Reveal variant="up">
               <p className="lead">
                 Regular maintenance helps monitor vehicle condition and identify
                 service needs before they become more complicated. Following
@@ -341,7 +341,7 @@ export function Preventive() {
             </Reveal>
             <div className="sys">
               {C.map(([k, t, d], i) => (
-                <Reveal as="div" className="item" key={k} delay={i * 0.06}>
+                <Reveal variant="flip" as="div" className="item" key={k} delay={i * 0.06}>
                   <header>
                     <small>[{k}]</small>
                     <small>SYS-0{i + 1}</small>
@@ -352,7 +352,7 @@ export function Preventive() {
               ))}
             </div>
           </div>
-          <Reveal as="aside" className="persp" delay={0.15}>
+          <Reveal variant="left" as="aside" className="persp" delay={0.15}>
             <small className="label">Editorial perspective</small>
             <h3>A more thoughtful approach to ownership</h3>
             <ol className="pts">

@@ -52,7 +52,7 @@ export default function TeamSection() {
         aria-label="Team members, scroll horizontally"
       >
         {list.map((m, i) => (
-          <Reveal as="li" key={m.id} delay={(i % 4) * 0.08}>
+          <Reveal variant="zoom" as="li" key={m.id} delay={(i % 4) * 0.08}>
             <div className="lanyard">
               <i className="thread" />
               <i className="clip" />

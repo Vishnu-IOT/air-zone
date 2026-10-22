@@ -28,7 +28,7 @@ export default function Footer() {
           alt=""
           aria-hidden="true"
         />
-        <Reveal className="container fgrid">
+        <Reveal variant="up" className="container fgrid">
           <div>
             <img
               src="/images/logo.png"
@@ -65,7 +65,7 @@ export default function Footer() {
               </Link>
             ))}
             <Link to="/book-a-quote" className="flink">
-              Book a quote →
+              Book a Service →
             </Link>
           </div>
           <div>
@@ -80,7 +80,10 @@ export default function Footer() {
               <MapPin size={14} /> {cfg.address || "Address: to be added"}
             </p>
             <p>
-              <Clock size={14} /> {cfg.hours}
+              <Clock size={14} />{" "}
+              <span style={{ color: "var(--silver)", whiteSpace: "pre-wrap" }}>
+                {cfg.hours}
+              </span>
             </p>
             {cfg.whatsapp && (
               <a href={"https://wa.me/" + cfg.whatsapp}>WhatsApp us</a>
@@ -88,11 +91,19 @@ export default function Footer() {
           </div>
         </Reveal>
         <div className="copy">
-          <span>© {new Date().getFullYear()} {cfg.name}. All rights reserved.</span>
+          <span>
+            © {new Date().getFullYear()} {cfg.name}. All rights reserved.
+          </span>
           <span>
             Designed &amp; developed by{" "}
             {cfg.developer.url ? (
-              <a href={cfg.developer.url} target="_blank" rel="noopener noreferrer">{cfg.developer.name}</a>
+              <a
+                href={cfg.developer.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {cfg.developer.name}
+              </a>
             ) : (
               <b>{cfg.developer.name}</b>
             )}

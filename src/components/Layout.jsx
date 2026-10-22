@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import cfg from "../data/siteConfig.js";
 import { services } from "../data/services.js";
+import { lockScroll } from "../lib/gsap.js";
 const links = [
   ["/", "Home"],
   ["/about", "About"],
@@ -29,6 +30,7 @@ export function Navbar() {
     if (!o) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    lockScroll(true);
     const onKey = (e) => e.key === "Escape" && setO(false);
     const mq = matchMedia("(min-width: 901px)");
     const onMq = () => mq.matches && setO(false);
@@ -36,6 +38,7 @@ export function Navbar() {
     mq.addEventListener("change", onMq);
     return () => {
       document.body.style.overflow = prev;
+      lockScroll(false);
       removeEventListener("keydown", onKey);
       mq.removeEventListener("change", onMq);
     };
@@ -55,7 +58,7 @@ export function Navbar() {
             ))}
           </nav>
           <Link className="btn btn-sm nav-cta" to="/book-a-quote">
-            Book a Quote
+            Book a Service
           </Link>
           <button
             className="burger"
@@ -85,7 +88,7 @@ export function Navbar() {
               </NavLink>
             ))}
             <Link className="btn" to="/book-a-quote" onClick={() => setO(false)}>
-              Book a Quote
+              Book a Service
             </Link>
           </motion.div>
         )}

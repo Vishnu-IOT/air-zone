@@ -60,13 +60,13 @@ export function Services() {
           <p className="note">{disclaimer}</p>
 
           <section className="section container">
-            <Reveal>
+            <Reveal variant="up">
               <p className="label">Process</p>
               <h2>How it works</h2>
             </Reveal>
             <ol className="steps five">
               {steps.map(([t, d], i) => (
-                <Reveal as="li" key={t} delay={i * 0.07}>
+                <Reveal variant="flip" as="li" key={t} delay={i * 0.07}>
                   <b>0{i + 1}</b>
                   <h3>{t}</h3>
                   <p>{d}</p>
@@ -98,7 +98,7 @@ export function ServiceDetails() {
     );
   const book = "/book-a-quote?service=" + s.slug;
   const L = ({ t, items }) => (
-    <Reveal>
+    <Reveal variant="blur">
       <h2>{t}</h2>
       <ul className="tick">
         {items.map((x) => (
@@ -145,7 +145,7 @@ export function ServiceDetails() {
           </div>
         </div>
         <div className="dgrid section">
-          <Reveal>
+          <Reveal variant="left">
             <h2>Overview</h2>
             <p className="lead">{s.overview}</p>
             <h3>Why it matters</h3>
@@ -157,7 +157,7 @@ export function ServiceDetails() {
           <L t="Inspection checklist" items={s.checklist} />
           <L t="What may be included" items={s.includes} />
         </div>
-        <Reveal>
+        <Reveal variant="right">
           <h2 className="mt">How it works</h2>
           <ol className="steps">
             {s.steps.map((t, i) => (
@@ -170,7 +170,7 @@ export function ServiceDetails() {
         </Reveal>
         <div className="dgrid section">
           <L t="What affects the final estimate" items={factors} />
-          <Reveal>
+          <Reveal variant="zoom">
             <h2>FAQ</h2>
             <Faq items={s.faqs} />
           </Reveal>

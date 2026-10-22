@@ -18,7 +18,7 @@ import cfg from "../data/siteConfig.js";
 import { services } from "../data/services.js";
 const cta = (
   <Link className="btn" to="/book-a-quote">
-    Book a Quote
+    Book a Service
   </Link>
 );
 export const About = () => (
@@ -39,7 +39,7 @@ export { default as Gallery } from "./Gallery.jsx";
 export const BookQuote = () => (
   <section className="page">
     <div className="container section">
-      <p className="label">Book a quote</p>
+      <p className="label">Book a Service</p>
       <h1>Let's care for your drive.</h1>
       <p className="lead">Tell us about your vehicle and what it needs.</p>
       <div className="dgrid">

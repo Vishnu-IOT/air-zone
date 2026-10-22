@@ -192,49 +192,49 @@ export const services = [
     ],
     related: ["ac-gas-leak", "battery-electrical"],
   }),
-//   S({
-//     slug: "ac-gas-leak",
-//     title: "AC Gas Leak Diagnosis & Refrigerant Service",
-//     image: "car-service.jpg",
-//     category: "Climate",
-//     cta: "Book AC Gas Service",
-//     duration: "1–3 hours",
-//     short:
-//       "Leak detection, refrigerant recovery and recharge to the correct specification.",
-//     overview:
-//       "If refrigerant escapes, cooling drops. We look for the leak, repair what is found and refill with the refrigerant type and quantity your vehicle specifies.",
-//     why: "Topping up without finding a leak is a short-term fix; the system loses gas again.",
-//     symptoms: [
-//       "Cooling fading over weeks",
-//       "Hissing or oily residue near AC parts",
-//       "AC clutch not engaging",
-//       "Recent AC repair or accident",
-//     ],
-//     checklist: [
-//       "System pressure readings",
-//       "Leak detection",
-//       "Seals, hoses and connections",
-//       "Refrigerant type check",
-//     ],
-//     includes: [
-//       "Leak diagnosis",
-//       "Recovery and recharge",
-//       "Post-service cooling test",
-//     ],
-//     steps: [
-//       "Pressure check and leak search",
-//       "Repair confirmed leak points",
-//       "Recharge and test",
-//     ],
-//     faqs: [
-//       [
-//         "Is a gas refill enough?",
-//         "Only if there is no leak; otherwise the cause should be fixed first.",
-//       ],
-//       ["Which refrigerant is used?", "The one specified for your vehicle."],
-//     ],
-//     related: ["ac-repair"],
-//   }),
+  //   S({
+  //     slug: "ac-gas-leak",
+  //     title: "AC Gas Leak Diagnosis & Refrigerant Service",
+  //     image: "car-service.jpg",
+  //     category: "Climate",
+  //     cta: "Book AC Gas Service",
+  //     duration: "1–3 hours",
+  //     short:
+  //       "Leak detection, refrigerant recovery and recharge to the correct specification.",
+  //     overview:
+  //       "If refrigerant escapes, cooling drops. We look for the leak, repair what is found and refill with the refrigerant type and quantity your vehicle specifies.",
+  //     why: "Topping up without finding a leak is a short-term fix; the system loses gas again.",
+  //     symptoms: [
+  //       "Cooling fading over weeks",
+  //       "Hissing or oily residue near AC parts",
+  //       "AC clutch not engaging",
+  //       "Recent AC repair or accident",
+  //     ],
+  //     checklist: [
+  //       "System pressure readings",
+  //       "Leak detection",
+  //       "Seals, hoses and connections",
+  //       "Refrigerant type check",
+  //     ],
+  //     includes: [
+  //       "Leak diagnosis",
+  //       "Recovery and recharge",
+  //       "Post-service cooling test",
+  //     ],
+  //     steps: [
+  //       "Pressure check and leak search",
+  //       "Repair confirmed leak points",
+  //       "Recharge and test",
+  //     ],
+  //     faqs: [
+  //       [
+  //         "Is a gas refill enough?",
+  //         "Only if there is no leak; otherwise the cause should be fixed first.",
+  //       ],
+  //       ["Which refrigerant is used?", "The one specified for your vehicle."],
+  //     ],
+  //     related: ["ac-repair"],
+  //   }),
   S({
     slug: "brakes",
     title: "Brake Inspection & Repair",
@@ -443,6 +443,205 @@ export const services = [
       ["Is a plan mandatory?", "No."],
     ],
     related: ["general-service", "oil-filter"],
+  }),
+
+  S({
+    slug: "obd2-fault-code-scan",
+    title: "OBD-II Fault Code Scanning",
+    image: "obd2-scanner.jpg",
+    category: "Diagnostics",
+    cta: "Book OBD-II Scan",
+    duration: "30–60 minutes",
+    short:
+      "Read supported diagnostic trouble codes and investigate dashboard warning lights.",
+    overview:
+      "An OBD-II scan retrieves diagnostic trouble codes from supported vehicle systems. The technician reviews available codes and freeze-frame information, explains the findings and recommends further testing where necessary.",
+    why: "A fault code identifies a detected condition, not necessarily a failed component. Interpreting the code correctly helps avoid unnecessary part replacement.",
+    symptoms: [
+      "Check-engine warning light",
+      "Engine running roughly",
+      "Reduced performance or limp mode",
+      "Recent warning light or intermittent fault",
+    ],
+    checklist: [
+      "Connect a compatible diagnostic scanner",
+      "Read available stored and pending fault codes",
+      "Review freeze-frame data where available",
+      "Record findings and recommended next steps",
+    ],
+    includes: [
+      "Supported fault-code scan",
+      "Explanation of retrieved codes",
+      "Diagnostic findings summary",
+      "Recommendations for further testing",
+    ],
+    steps: [
+      "Confirm vehicle details and customer concerns",
+      "Connect the scanner and retrieve available codes",
+      "Review results and explain next steps",
+    ],
+    faqs: [
+      [
+        "Does a fault code identify the exact failed part?",
+        "Not always. Additional testing may be required to confirm the root cause.",
+      ],
+      [
+        "Can every vehicle be scanned?",
+        "Coverage depends on vehicle compatibility, protocol and scanner capabilities.",
+      ],
+    ],
+    related: ["diagnostics", "live-data-diagnostics", "engine-performance"],
+  }),
+
+  // S({
+  //   slug: "live-data-diagnostics",
+  //   title: "Live Data & Sensor Diagnostics",
+  //   image: "live-data-diagnostics.jpg",
+  //   category: "Diagnostics",
+  //   cta: "Book Live Data Check",
+  //   duration: "1–2 hours",
+  //   short:
+  //     "Analyze supported live engine parameters and sensor readings to investigate performance issues.",
+  //   overview:
+  //     "Live-data diagnostics uses a compatible scanner to observe available engine parameters and sensor readings. The technician compares readings with expected operating behaviour and performs additional tests where necessary.",
+  //   why: "Some sensor, fuel and engine performance problems cannot be confirmed from fault codes alone. Live data helps narrow down possible causes.",
+  //   symptoms: [
+  //     "Rough idle or hesitation",
+  //     "Poor fuel economy",
+  //     "Loss of engine power",
+  //     "Intermittent sensor-related warning lights",
+  //   ],
+  //   checklist: [
+  //     "Review relevant stored fault codes",
+  //     "Inspect available live sensor readings",
+  //     "Review supported fuel-trim and misfire data",
+  //     "Identify readings that require further testing",
+  //   ],
+  //   includes: [
+  //     "Relevant live-data review",
+  //     "Sensor and parameter assessment",
+  //     "Findings and recommendations",
+  //     "Follow-up testing recommendations",
+  //   ],
+  //   steps: [
+  //     "Understand the reported symptoms",
+  //     "Select relevant live-data parameters",
+  //     "Evaluate readings and perform applicable checks",
+  //     "Explain findings and next steps",
+  //   ],
+  //   faqs: [
+  //     [
+  //       "Can live data identify a faulty sensor?",
+  //       "It can help identify abnormal readings, but further testing may be needed to confirm the cause.",
+  //     ],
+  //     [
+  //       "Are all sensor values available?",
+  //       "No. Available parameters depend on the vehicle and diagnostic equipment.",
+  //     ],
+  //   ],
+  //   related: ["obd2-fault-code-scan", "diagnostics", "engine-performance"],
+  // }),
+
+  S({
+    slug: "full-system-ecu-diagnostics",
+    title: "Full-System ECU Diagnostics",
+    image: "ecu-diagnostics.png",
+    category: "Diagnostics",
+    cta: "Request ECU Diagnostics",
+    duration: "1–3 hours",
+    short:
+      "Scan supported electronic control modules to investigate faults across multiple vehicle systems.",
+    overview:
+      "Advanced diagnostics checks accessible electronic control modules beyond basic engine OBD-II scanning. Depending on the vehicle and equipment, this may include ABS, airbag, transmission, body control and other supported systems.",
+    why: "Modern vehicles use multiple electronic modules. A fault outside the engine management system may require enhanced vehicle-specific diagnostics.",
+    symptoms: [
+      "ABS or stability-control warning",
+      "Airbag or SRS warning",
+      "Transmission warning or abnormal shifting",
+      "Multiple electrical or system warnings",
+    ],
+    checklist: [
+      "Confirm vehicle and scanner compatibility",
+      "Scan accessible supported modules",
+      "Review module-specific fault codes",
+      "Identify communication faults where supported",
+    ],
+    includes: [
+      "Supported multi-module scan",
+      "Fault-code review and explanation",
+      "Diagnostic findings report",
+      "Recommendations for further investigation",
+    ],
+    steps: [
+      "Confirm reported symptoms and vehicle details",
+      "Scan available electronic control modules",
+      "Review faults and identify additional tests",
+      "Explain results and repair options",
+    ],
+    faqs: [
+      [
+        "Can the scanner access every ECU?",
+        "No. Access depends on vehicle compatibility, equipment and available functions.",
+      ],
+      [
+        "Does an ECU fault code mean the ECU is defective?",
+        "No. Wiring, power supply, sensors or network communication can also cause faults.",
+      ],
+    ],
+    related: ["obd2-fault-code-scan", "diagnostics", "battery-electrical"],
+  }),
+
+  S({
+    slug: "diagnostic-resets-coding",
+    title: "Diagnostic Resets & ECU Coding",
+    image: "ecu-coding.webp",
+    category: "Diagnostics",
+    cta: "Request Coding Service",
+    duration: "1–3 hours",
+    short:
+      "Perform supported fault-code clearing, service resets and vehicle-specific coding procedures.",
+    overview:
+      "This service covers eligible diagnostic resets, maintenance indicator resets, adaptations and ECU coding where supported. The technician verifies vehicle compatibility and the required procedure before starting.",
+    why: "Clearing codes without addressing the underlying fault may only provide temporary results. Coding and adaptations also require compatible equipment and correct vehicle-specific procedures.",
+    symptoms: [
+      "Service reminder after completed maintenance",
+      "Persistent warning after an approved repair",
+      "Required supported adaptation or relearn",
+      "Vehicle configuration or coding requirement",
+    ],
+    checklist: [
+      "Scan and record relevant fault codes",
+      "Confirm the required procedure and compatibility",
+      "Check relevant repair or maintenance history",
+      "Verify results after the procedure",
+    ],
+    includes: [
+      "Compatibility assessment",
+      "Agreed supported reset or coding procedure",
+      "Post-procedure scan where applicable",
+      "Explanation of remaining faults",
+    ],
+    steps: [
+      "Assess the vehicle and required operation",
+      "Confirm compatibility and obtain approval",
+      "Perform the agreed procedure",
+      "Verify the result and report remaining faults",
+    ],
+    faqs: [
+      [
+        "Will clearing a code fix the fault?",
+        "No. The underlying cause must be diagnosed and repaired when necessary.",
+      ],
+      [
+        "Can every vehicle be coded?",
+        "No. Available functions depend on the vehicle, equipment, software and procedure.",
+      ],
+    ],
+    related: [
+      "diagnostics",
+      "obd2-fault-code-scan",
+      "full-system-ecu-diagnostics",
+    ],
   }),
 ];
 export const bySlug = (s) => services.find((x) => x.slug === s);

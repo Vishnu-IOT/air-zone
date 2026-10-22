@@ -5,6 +5,10 @@ import { Navbar } from "./components/Layout.jsx";
 import Footer from "./components/Footer.jsx";
 import Splash from "./components/Splash.jsx";
 import Cursor from "./components/Cursor.jsx";
+import SmoothScroll from "./components/SmoothScroll.jsx";
+import GsapEffects from "./components/GsapEffects.jsx";
+import FloatingActions from "./components/FloatingActions.jsx";
+import { scrollToTop } from "./lib/gsap.js";
 import Home from "./pages/Home.jsx";
 import { Services, ServiceDetails } from "./pages/ServicesPages.jsx";
 import { About, Gallery, Contact, BookQuote, NotFound } from "./pages/Other.jsx";
@@ -35,7 +39,7 @@ export default function App() {
   useEffect(() => {
     if (location === shown) return;
     if (location.pathname === shown.pathname || r) { setShown(location); return; }
-    const t = setTimeout(() => { window.scrollTo(0, 0); setShown(location); }, 360);
+    const t = setTimeout(() => { scrollToTop(true); setShown(location); }, 360);
     return () => clearTimeout(t);
   }, [location, shown, r]);
   return (
@@ -43,6 +47,7 @@ export default function App() {
       <Splash onLeave={onLeave} />
       <PageWipe pathname={location.pathname} />
       <Cursor />
+      <SmoothScroll />
       <Navbar />
       {entered && (
         <>
@@ -59,6 +64,8 @@ export default function App() {
             </Routes>
           </motion.main>
           <Footer />
+          <GsapEffects page={shown.pathname} />
+          <FloatingActions />
         </>
       )}
     </>

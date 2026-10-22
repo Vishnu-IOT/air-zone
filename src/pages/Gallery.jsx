@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Lines from "../components/Lines.jsx";
+import { lockScroll } from "../lib/gsap.js";
 import Reveal from "../components/Reveal.jsx";
 import { galleryItems } from "../data/gallery.js";
 export default function Gallery() {
@@ -23,9 +24,9 @@ export default function Gallery() {
       if (e.key === "ArrowLeft") go(-1);
     };
     window.addEventListener("keydown", k);
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden"; lockScroll(true);
     closeBtn.current && closeBtn.current.focus();
-    return () => { window.removeEventListener("keydown", k); document.body.style.overflow = ""; };
+    return () => { window.removeEventListener("keydown", k); document.body.style.overflow = ""; lockScroll(false); };
   }, [open, go]);
   const cur = open ? list[o] : null;
   return (
@@ -33,7 +34,7 @@ export default function Gallery() {
       <div className="container section">
         <p className="label">Gallery</p>
         <Lines as="h1" lines={["Inside the workshop."]} />
-        <Reveal><p className="lead">A look at our workshop, electrical, engine and interior work. Select any photo to view it full screen.</p></Reveal>
+        <Reveal variant="blur"><p className="lead">A look at our workshop, electrical, engine and interior work. Select any photo to view it full screen.</p></Reveal>
         <div className="row" role="group" aria-label="Filter gallery">
           {cats.map((x) => (
             <button key={x} className={"chip" + (x === c ? " on" : "")} aria-pressed={x === c} onClick={() => setC(x)}>{x}</button>
@@ -51,7 +52,7 @@ export default function Gallery() {
               initial={r ? false : { opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-              transition={{ duration: 0.7, delay: (n % 3) * 0.08, ease: [0.2, 0.7, 0.2, 1] }}
+              transition={{ duration: 1.2, delay: (n % 3) * 0.15, ease: [0.2, 0.7, 0.2, 1] }}
             >
               <img src={i.src} alt={i.alt} width={i.w} height={i.h} loading="lazy" />
               <span className="gcap">{i.category}</span>
@@ -59,7 +60,7 @@ export default function Gallery() {
           ))}
         </div>
         <div className="row">
-          <Link className="btn" to="/book-a-quote">Book a Quote</Link>
+          <Link className="btn" to="/book-a-quote">Book a Service</Link>
           <Link className="btn ghost" to="/services">Explore Services</Link>
         </div>
       </div>

@@ -6,8 +6,8 @@ import Reveal from "../components/Reveal.jsx";
 import SmartImage from "../components/SmartImage.jsx";
 import cfg from "../data/siteConfig.js";
 const q = encodeURIComponent(cfg.address);
-const embed = `https://www.google.com/maps?q=${q}&output=embed`;
-const open = `https://www.google.com/maps/search/?api=1&query=${q}`;
+const embed = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2832.086357937416!2d76.6922130766534!3d10.769326752324712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba86ddf8f5d72b9%3A0x8ce675a472e84df5!2sAir%20Zone!5e0!3m2!1sen!2sin!4v1792662695138!5m2!1sen!2sin`;
+const open = `https://www.google.com/maps/place/Air+Zone/@10.7693268,76.6922131,17z/data=!4m6!3m5!1s0x3ba86ddf8f5d72b9:0x8ce675a472e84df5!8m2!3d10.7694767!4d76.6918143!16s%2Fg%2F11g0zqp418?hl=en-GB&entry=ttu&g_ep=EgoyMDI2MTAxOS4wIKXMDSoASAFQAw%3D%3D`;
 export default function Contact() {
   return (
     <>
@@ -30,7 +30,7 @@ export default function Contact() {
         </div>
       </section>
       <section className="section container cgrid">
-        <Reveal className="cinfo2">
+        <Reveal variant="left" className="cinfo2">
           <h2>Get in touch</h2>
           <ul className="clist">
             <li>
@@ -64,7 +64,7 @@ export default function Contact() {
           </ul>
           <div className="row">
             <Link className="btn" to="/book-a-quote">
-              Book a Quote
+              Book a Service
             </Link>
             {cfg.whatsapp && (
               <a className="btn ghost" href={"https://wa.me/" + cfg.whatsapp}>
@@ -73,16 +73,16 @@ export default function Contact() {
             )}
           </div>
           <p className="note">
-            {cfg.hours}. For prices or appointments, use Book a Quote.
+            {cfg.hours}. For prices or appointments, use Book a Service.
           </p>
         </Reveal>
-        <Reveal delay={0.1} className="cform">
+        <Reveal variant="right" delay={0.1} className="cform">
           <h2>Send an enquiry</h2>
           <Form contact />
         </Reveal>
       </section>
       <section className="container section mapwrap">
-        <Reveal>
+        <Reveal variant="zoom">
           <div className="mapbar">
             <div>
               <p className="label">Find us</p>

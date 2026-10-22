@@ -22,7 +22,7 @@ export function Faq({ items }) {
             initial={r ? false : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px 0px -12% 0px" }}
-            transition={{ duration: 0.6, delay: i * 0.06 }}
+            transition={{ duration: 1, delay: i * 0.12 }}
           >
             <h3 className="faq-q">
               <button
@@ -144,7 +144,7 @@ export function Reviews() {
         initial={r ? false : { opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-        transition={{ duration: 0.5, ease: [0.2, 0.7, 0.2, 1] }}
+        transition={{ duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
       >
         <article className="rv-card c0 featured" aria-live="polite">
           <SmartImage
@@ -237,7 +237,7 @@ export function Reviews() {
 export function CtaBanner() {
   return (
     <section className="ctaban">
-      <Reveal>
+      <Reveal variant="zoom">
         <h2>Ready to give your car the care it deserves?</h2>
         <p>
           Tell us about your vehicle and the service you need. We'll help you
@@ -245,7 +245,7 @@ export function CtaBanner() {
         </p>
         <div className="row center">
           <Link className="btn" to="/book-a-quote">
-            Book a Quote
+            Book a Service
           </Link>
           <Link className="btn ghost" to="/services">
             Explore Services

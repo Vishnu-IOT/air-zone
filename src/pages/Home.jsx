@@ -103,12 +103,12 @@ export default function Home() {
         </div>
       </div>
       <AboutCompany />
-      <TeamSection />
+      {/* <TeamSection /> */}
       <BrandCarousel />
       <Intro />
       {/* <CarFeature /> */}
       <section className="section container fs fs-carfeat">
-        <Reveal>
+        <Reveal variant="up">
           <p className="label">Featured services</p>
           {/* <Lines as="h2" lines={["Precision care for", "every drive."]} /> */}
           <Lines as="h2" lines={["Precision care for", "every drive."]} />
@@ -118,7 +118,7 @@ export default function Home() {
           </p>
         </Reveal>
         <div className="fs-grid">
-          <Reveal className="fs-big">
+          <Reveal variant="left" className="fs-big">
             <Link to={"/services/" + big.slug} data-cursor="View">
               <SmartImage src={big.image} alt={big.title} />
               <div className="fs-over">
@@ -133,7 +133,7 @@ export default function Home() {
           </Reveal>
           <ol className="fs-list">
             {rest.map((s, i) => (
-              <Reveal as="li" key={s.slug} delay={i * 0.07}>
+              <Reveal variant="right" as="li" key={s.slug} delay={i * 0.07}>
                 <Link to={"/services/" + s.slug} data-cursor="View">
                   <SmartImage src={s.image} alt={s.title} />
                   <div>
@@ -157,7 +157,7 @@ export default function Home() {
       </section>
       <section className="why">
         <div className="container section">
-          <Reveal>
+          <Reveal variant="blur">
             <p className="label">Why choose Air Zone</p>
             <h2>Care that goes beyond the drive.</h2>
             <p className="note">
@@ -166,7 +166,7 @@ export default function Home() {
           </Reveal>
           <ol className="whylist">
             {whyPoints.map(([t, d], i) => (
-              <Reveal as="li" key={t} delay={i * 0.06}>
+              <Reveal variant="flip" as="li" key={t} delay={i * 0.06}>
                 <b>0{i + 1}</b>
                 <h3>{t}</h3>
                 <p>{d}</p>
@@ -177,13 +177,13 @@ export default function Home() {
       </section>
       <Reviews />
       {/* <section className="section container">
-        <Reveal>
+        <Reveal variant="left">
           <p className="label">Process</p>
           <h2>How it works</h2>
         </Reveal>
         <ol className="steps five">
           {steps.map(([t, d], i) => (
-            <Reveal as="li" key={t} delay={i * 0.07}>
+            <Reveal variant="zoom" as="li" key={t} delay={i * 0.07}>
               <b>0{i + 1}</b>
               <h3>{t}</h3>
               <p>{d}</p>
@@ -195,7 +195,7 @@ export default function Home() {
         </p>
       </section> */}
       <section className="section container narrow">
-        <Reveal>
+        <Reveal variant="right">
           <p className="label">FAQ</p>
           <h2>Good questions.</h2>
         </Reveal>

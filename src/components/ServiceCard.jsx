@@ -5,7 +5,7 @@ import SmartImage from "./SmartImage.jsx";
 import { priceText } from "../data/services.js";
 export default function ServiceCard({ s, i, wide }) {
   return (
-    <Reveal delay={(i % 3) * 0.08} className={"card" + (wide ? " wide" : "")}>
+    <Reveal variant="rise" delay={(i % 3) * 0.08} className={"card" + (wide ? " wide" : "")}>
       <Link to={"/services/" + s.slug} data-cursor="View">
         <div className="card-img">
           <SmartImage src={s.image} alt={s.title} />

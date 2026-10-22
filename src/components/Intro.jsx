@@ -19,7 +19,7 @@ import Reveal from "./Reveal.jsx";
 //   [Users, "Customer-Focused Service", "Clear explanations before additional work."],
 // ];
 const P = [
-  [Gauge, "5+", "Years of Experience"],
+  [Gauge, "20+", "Years of Experience"],
   [Cpu, "1,000+", "Happy Customers"],
   [Snowflake, "20+", "Car Brands Serviced"],
   [Users, "2,500+", "Services Completed"],
@@ -37,7 +37,7 @@ export default function Intro() {
       {/* <div className="container center-text">
         <p className="label">Our standard</p>
         <Lines as="h2" lines={["More than service.", "A standard of precision."]} />
-        <Reveal delay={0.2}>
+        <Reveal variant="blur" delay={0.2}>
           <p className="lead">
             Air Zone Automobile brings together careful vehicle inspection, thoughtful maintenance, advanced diagnostics,
             and luxury car AC care. Our focus is on understanding each vehicle's needs and helping customers make
@@ -60,7 +60,7 @@ export default function Intro() {
           initial={r ? false : { opacity: 0, scale: 0.94 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "0px 0px -12% 0px" }}
-          transition={{ duration: 1.1 }}
+          transition={{ duration: 1.7 }}
         >
           <SmartImage
             src="/images/hero/standard.png"
@@ -77,7 +77,7 @@ export default function Intro() {
               initial={r ? false : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "0px 0px -12% 0px" }}
-              transition={{ duration: 0.6, delay: 0.3 + i * 0.12 }}
+              transition={{ duration: 1.1, delay: 0.4 + i * 0.22 }}
             >
               <i>
                 <I size={18} />
