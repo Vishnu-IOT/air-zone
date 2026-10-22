@@ -25,7 +25,7 @@ export default function Contact() {
           <Lines as="h1" lines={["Let's talk about", "your car."]} />
           <p className="lead">
             Tell us what your vehicle needs. Contact Air Zone Automobile to
-            discuss a service enquiry or request a quote.
+            discuss a service enquiry or request a service.
           </p>
         </div>
       </section>

@@ -14,7 +14,7 @@ import {
 } from "../data/services.js";
 
 const steps = [
-  ["Request an appointment", "Send a quote request online."],
+  ["Request an appointment", "Send a service request online."],
   ["Share details", "Tell us your vehicle and the service you need."],
   [
     "Inspection & estimate",

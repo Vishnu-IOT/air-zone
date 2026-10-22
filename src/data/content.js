@@ -58,7 +58,7 @@ export const reviews = [
 export const homeFaqs = [
   [
     "How do I book an appointment?",
-    "Send a quote request with your vehicle and service details. The team will follow up to discuss next steps.",
+    "Send a service request with your vehicle and service details. The team will follow up to discuss next steps.",
   ],
   [
     "Will I get an estimate first?",
