@@ -9,6 +9,8 @@ export default {
   phone: "9746440740",
   email: "airzonepkd@gmail.com",
   address: "BPL Koottupatha, Pollachi Road, Palakkad, Kerala, India",
+  mapUrl:
+    "https://www.google.com/maps/place/Air+Zone/@10.7693268,76.6922131,17z/data=!4m6!3m5!1s0x3ba86ddf8f5d72b9:0x8ce675a472e84df5!8m2!3d10.7694767!4d76.6918143!16s%2Fg%2F11g0zqp418?hl=en-GB", // Google Maps pin used by the floating Location button
   whatsapp: "", // e.g. '919746440740' once confirmed
   hours: `Opening hours: Mon – Sun \n 9:00 AM – 8:00 PM`,
   social: { instagram: "", facebook: "" },

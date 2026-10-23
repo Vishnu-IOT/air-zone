@@ -63,6 +63,7 @@ export default function Home() {
           preload="auto"
           poster="/images/hero/hero.png"
         >
+          <source src="/images/hero/hero-mobile.mp4" type="video/mp4" media="(max-width: 768px)" />
           <source src="/images/hero/hero.mp4" type="video/mp4" />
           Your browser does not support the video element.
         </video>

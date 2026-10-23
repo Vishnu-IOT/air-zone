@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring, useMotionValueEvent, useReducedMotion } from "framer-motion";
-import { ArrowUp, Phone } from "lucide-react";
+import { ArrowUp, Phone, MapPin } from "lucide-react";
 import cfg from "../data/siteConfig.js";
 import { scrollToTop } from "../lib/gsap.js";
 const WaIcon = () => (
@@ -44,6 +44,10 @@ export default function FloatingActions() {
             </motion.button>
           )}
         </AnimatePresence>
+        <motion.a className="fab fab-loc" href={cfg.mapUrl || "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(cfg.name + " " + cfg.address)} target="_blank" rel="noopener noreferrer" data-tip="Our location" aria-label={"Open " + cfg.name + " location in Google Maps"}
+          initial={r ? false : { scale: 0, rotate: -90 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: "spring", stiffness: 300, damping: 18, delay: 0.4 }} whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.92 }}>
+          <MapPin size={22} />
+        </motion.a>
         <motion.a className="fab fab-wa" href={wa} target="_blank" rel="noopener noreferrer" data-tip="Chat on WhatsApp" aria-label="Chat on WhatsApp"
           initial={r ? false : { scale: 0, rotate: -90 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: "spring", stiffness: 300, damping: 18, delay: 0.5 }} whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.92 }}>
           {!r && <span className="pulse" aria-hidden="true" />}

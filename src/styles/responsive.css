@@ -2,7 +2,13 @@
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
+}
+html {
+  overflow-x: hidden; /* propagates to the viewport, so it never becomes its own scroller */
+  overflow-x: clip;
+}
+body {
+  overflow-x: clip; /* NOT hidden: hidden+hidden on html/body turns <body> into a 2nd scroll container (jitter, broken sticky/pin) */
 }
 img,
 video,

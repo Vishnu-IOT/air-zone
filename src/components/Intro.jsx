@@ -1,11 +1,6 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Gauge, Cpu, Snowflake, Users } from "lucide-react";
 import Lines from "./Lines.jsx";
 import SmartImage from "./SmartImage.jsx";
@@ -27,11 +22,6 @@ const P = [
 export default function Intro() {
   const ref = useRef(null);
   const r = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], r ? [0, 0] : [24, -24]);
   return (
     <section className="intro2" ref={ref}>
       {/* <div className="container center-text">
@@ -56,7 +46,6 @@ export default function Intro() {
         />
         <motion.div
           className="intro2-car"
-          style={{ y }}
           initial={r ? false : { opacity: 0, scale: 0.94 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "0px 0px -12% 0px" }}

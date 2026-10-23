@@ -1,0 +1,71 @@
+/* ===== Smooth-scroll & animation hardening (loaded last) ===== */
+
+/* Lenis housekeeping */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
+
+/* No grey tap flash, no accidental text-size jumps when a phone rotates */
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Scroll-driven layers live on the GPU and are never re-rasterised mid-scroll */
+.hero video,
+.hero-img,
+.intro2-car img,
+.aboutco-bgimg img,
+.dhero > img,
+.chero-bg,
+.bs-wide img {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-origin: 50% 50%;
+}
+.bc-track { backface-visibility: hidden; }
+
+/* Fixed chrome sits on its own layer so page content scrolling underneath never repaints it */
+.nav,
+.fab-stack { backface-visibility: hidden; transform: translateZ(0); }
+
+/* Phones / tablets / touch: live blur is the most expensive thing to repaint while scrolling or scrubbing.
+   Swap it for a slightly denser solid so the look stays the same without the dropped frames. */
+@media (max-width: 860px), (hover: none), (pointer: coarse) {
+  .vx-hint,
+  .vx-chip,
+  .vx-infos,
+  .vx-info,
+  .vx-prog,
+  .gp,
+  .panels2 li,
+  .card,
+  .glass {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  .vx-hint,
+  .vx-chip { background: rgba(5, 5, 5, 0.84) !important; }
+  .vx-infos,
+  .vx-info,
+  .vx-prog { background: rgba(8, 9, 12, 0.88) !important; }
+  .vx-refl { filter: none; } /* blurring a mirrored full-size car every frame while it is scaled 2x is very costly */
+}
+
+/* Page transition / splash must never catch a tap or stretch the page */
+.wipe,
+.splash { overscroll-behavior: contain; touch-action: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero video,
+  .hero-img,
+  .intro2-car img,
+  .aboutco-bgimg img,
+  .dhero > img,
+  .chero-bg,
+  .bs-wide img { will-change: auto; }
+}

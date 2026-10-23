@@ -70,7 +70,7 @@ export default function Showroom() {
         const camX = (i) => () => camFor(i)().x, camY = (i) => () => camFor(i)().y, camS = (i) => () => scaleFor(i);
         const rev = (i) => ({ "--hx": pct(STAGES[i].hotspot.x), "--hy": pct(STAGES[i].hotspot.y) });
 
-        gsap.set(cam, { transformOrigin: "0 0", x: camX(0), y: camY(0), scale: camS(0) });
+        gsap.set(cam, { transformOrigin: "0 0", x: camX(0), y: camY(0), scale: camS(0), force3D: true });
         gsap.set(sys, { opacity: GHOST });
         gsap.set(hot, { opacity: 0, scale: 0.6 });
         gsap.set(chip, { opacity: 0, x: (i) => (STAGES[i].label.side === "left" ? 14 : -14) });
@@ -83,7 +83,7 @@ export default function Showroom() {
         gsap.set(con[0], { strokeDashoffset: 0 });
         gsap.set(xray, { opacity: 0.9 });
 
-        const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+        const tl = gsap.timeline({ defaults: { ease: "power2.out" } }); // gsap.config({force3D:true}) in lib/gsap.js keeps the GPU layer after every tween (no end-of-move blur/flicker)
         tl.set(cam, { x: camX(0), y: camY(0), scale: camS(0) }, 0); // re-measured on every refresh (resize / rotation)
         for (let i = 0; i < N; i++) {
           if (i > 0) {
@@ -115,8 +115,9 @@ export default function Showroom() {
           end: () => "+=" + dist(),
           pin: true,
           pinSpacing: true,
-          anticipatePin: 1,
-          scrub: 0.6,
+          // Lenis (desktop) already eases the scroll, and touch uses native momentum, so only a hair of scrub is needed.
+          // anticipatePin is for native-scroll lag and makes the pin jump when Lenis drives the scroll, so it is off.
+          scrub: narrow ? 0.2 : 0.35,
           animation: tl,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
