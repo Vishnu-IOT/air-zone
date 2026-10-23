@@ -55,7 +55,7 @@ dt {
     gap: 1rem;
   }
   .brand img {
-    height: 42px;
+    height: 40px;
   }
 }
 @media (max-width: 560px) {

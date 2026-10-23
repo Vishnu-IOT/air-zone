@@ -21,7 +21,7 @@ import Reveal from "./Reveal.jsx";
 const P = [
   [Gauge, "20+", "Years of Experience"],
   [Cpu, "1,000+", "Happy Customers"],
-  [Snowflake, "20+", "Car Brands Serviced"],
+  [Snowflake, "15+", "Car Brands Serviced"],
   [Users, "2,500+", "Services Completed"],
 ];
 export default function Intro() {

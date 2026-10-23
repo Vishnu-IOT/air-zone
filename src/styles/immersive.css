@@ -594,7 +594,7 @@
   transform: translateX(-50%);
   width: min(100%, 1500px);
   height: auto;
-  opacity: 0.45;
+  opacity: 0.25;
   pointer-events: none;
   user-select: none;
   z-index: -1;
@@ -653,5 +653,64 @@
   .site-footer__bg {
     bottom: 8%;
     opacity: 1;
+    z-index: 1;
   }
+}
+
+/* ===== Footer: readable text over the AIR ZONE background ===== */
+
+/* soft dark layer between the background image and the text */
+.site-footer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 5, 5, 0.72) 0%,
+    rgba(5, 5, 5, 0.55) 70%,
+    rgba(5, 5, 5, 0.35) 100%
+  );
+}
+
+/* headings */
+.site-footer .fgrid h4 {
+  color: #ffffff;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.85);
+}
+
+/* paragraphs + links */
+.site-footer .fgrid p,
+.site-footer .fgrid a {
+  color: #f5f6f8;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.85);
+}
+
+.site-footer .fgrid a:hover {
+  color: #3b97ff;
+}
+
+/* "Book a Service" link */
+.site-footer .fgrid .flink {
+  color: #3b97ff;
+  border-bottom-color: #3b97ff;
+}
+
+/* opening-hours text has an inline color, so it needs !important */
+.site-footer .fgrid p span {
+  color: #f5f6f8 !important;
+}
+
+/* copyright bar */
+.site-footer .copy,
+.site-footer .copy span {
+  color: #d9dce1;
+  background: rgba(5, 5, 5, 0.75);
+}
+.site-footer .copy a {
+  color: #3b97ff;
+}
+.site-footer .copy a:hover {
+  color: #ffffff;
 }

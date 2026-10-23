@@ -5,6 +5,7 @@ import ServiceCard from "../components/ServiceCard.jsx";
 import SmartImage from "../components/SmartImage.jsx";
 import { Faq, Reviews, CtaBanner } from "../components/Extras.jsx";
 import AboutCompany from "../components/AboutCompany.jsx";
+import Showroom from "../components/Showroom.jsx";
 import Intro from "../components/Intro.jsx";
 import CarFeature from "../components/CarFeature.jsx";
 import TeamSection from "../components/TeamSection.jsx";
@@ -155,6 +156,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      <Showroom />
       <section className="why">
         <div className="container section">
           <Reveal variant="blur">

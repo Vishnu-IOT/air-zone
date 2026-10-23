@@ -1,0 +1,583 @@
+/* ===== Interactive Showroom / Vehicle Explorer — all classes prefixed .vx- ===== */
+.vx {
+  position: relative;
+  background: var(--bg);
+  overflow-x: clip;
+}
+.vx-intro {
+  text-align: center;
+  padding: clamp(3.5rem, 9vw, 6.5rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+}
+.vx-intro .lead {
+  margin-inline: auto;
+}
+.vx-title {
+  margin-bottom: 0.6rem;
+}
+
+/* ---------- pinned scene ---------- */
+.vx-scene {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, #05060803 0%, transparent 100%),
+    linear-gradient(180deg, #06080b 0%, #090c10 52%, #151a21 61%, #0d1015 78%, var(--bg) 100%);
+  border-top: 1px solid var(--bd);
+}
+.vx-room,
+.vx-room > span {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.vx-spot {
+  background:
+    radial-gradient(ellipse 55% 60% at 50% -8%, rgba(217, 220, 225, 0.2), transparent 70%),
+    radial-gradient(ellipse 38% 40% at 50% 8%, rgba(125, 188, 255, 0.12), transparent 70%);
+}
+.vx-grid {
+  inset: auto -25% -30% -25% !important;
+  top: 50% !important;
+  background:
+    linear-gradient(rgba(125, 188, 255, 0.16) 1px, transparent 1px) 0 0 / 100% 54px,
+    linear-gradient(90deg, rgba(125, 188, 255, 0.14) 1px, transparent 1px) 0 0 / 72px 100%;
+  transform: perspective(520px) rotateX(64deg);
+  transform-origin: 50% 0;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 40%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 40%, transparent);
+  opacity: 0.55;
+}
+.vx-floorglow {
+  top: 52% !important;
+  background: linear-gradient(100deg, transparent 30%, rgba(217, 220, 225, 0.09) 48%, transparent 62%) 0 0 / 220% 100%;
+  animation: vx-floor 11s ease-in-out infinite alternate;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 30%, transparent);
+}
+@keyframes vx-floor {
+  from { background-position: 0% 0; }
+  to { background-position: 100% 0; }
+}
+
+/* ---------- vehicle + camera ---------- */
+.vx-frame {
+  --vx-nav: 74px; /* clears the fixed site navbar while the scene is pinned */
+  position: absolute;
+  inset: var(--vx-nav) 0 0 0;
+  overflow: hidden;
+}
+.vx-cam {
+  --vx-w: min(98%, 1560px, calc((100svh - 10.5rem) * 1.97));
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--vx-w);
+  will-change: transform;
+  transform-origin: 0 0;
+}
+.vx-car,
+.vx-xray,
+.vx-lens,
+.vx-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
+}
+.vx-car,
+.vx-xray,
+.vx-lens {
+  object-fit: contain;
+}
+/* glossy floor: mirrored car fading out below the tyre contact line (--cy), plus the display platform */
+.vx-refl {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  top: calc((2 * var(--cy) - 1) * 100%);
+  transform: scaleY(-1);
+  opacity: 0.34;
+  filter: blur(1.4px);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 52%, rgba(0, 0, 0, 0.9) calc(var(--cy) * 100%), transparent calc(var(--cy) * 100% + 0.6%));
+  mask-image: linear-gradient(to bottom, transparent 52%, rgba(0, 0, 0, 0.9) calc(var(--cy) * 100%), transparent calc(var(--cy) * 100% + 0.6%));
+}
+.vx-plat {
+  position: absolute;
+  left: 3%;
+  width: 94%;
+  top: calc(var(--cy) * 100% - 7.5%);
+  height: 15%;
+  border-radius: 50%;
+  border: 1px solid rgba(217, 220, 225, 0.2);
+  background: radial-gradient(ellipse at 50% 50%, rgba(125, 188, 255, 0.2), rgba(125, 188, 255, 0.05) 48%, transparent 72%);
+  box-shadow: 0 0 0 10px rgba(217, 220, 225, 0.03), 0 0 60px rgba(0, 117, 251, 0.14);
+  pointer-events: none;
+}
+/* stage lens: skeleton revealed around the active hotspot (GSAP drives --hx/--hy/opacity) */
+.vx-xray {
+  --hx: 50%;
+  --hy: 50%;
+  opacity: 0;
+  -webkit-mask-image: radial-gradient(ellipse 13% 24% at var(--hx) var(--hy), #000 46%, transparent 100%);
+  mask-image: radial-gradient(ellipse 13% 24% at var(--hx) var(--hy), #000 46%, transparent 100%);
+}
+/* cursor lens: skeleton revealed under the pointer (--px/--py/--pr set by the pointer effect) */
+.vx-lens {
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  -webkit-mask-image: radial-gradient(circle var(--pr, 150px) at var(--px, 50%) var(--py, 50%), #000 66%, transparent 100%);
+  mask-image: radial-gradient(circle var(--pr, 150px) at var(--px, 50%) var(--py, 50%), #000 66%, transparent 100%);
+}
+.vx-lens.is-on { opacity: 1; }
+.vx-ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(var(--pr, 150px) * 1.7);
+  height: calc(var(--pr, 150px) * 1.7);
+  translate: calc(var(--px, 50%) - var(--pr, 150px) * 0.85) calc(var(--py, 50%) - var(--pr, 150px) * 0.85);
+  border-radius: 50%;
+  border: 1px solid rgba(160, 205, 255, 0.55);
+  box-shadow: 0 0 26px var(--primary-glow), inset 0 0 22px rgba(0, 117, 251, 0.16);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  pointer-events: none;
+}
+.vx-ring.is-on { opacity: 1; }
+.vx-ring::before,
+.vx-ring::after {
+  content: "";
+  position: absolute;
+  background: rgba(160, 205, 255, 0.5);
+}
+.vx-ring::before { left: 50%; top: 4%; width: 1px; height: 10%; }
+.vx-ring::after { top: 50%; left: 4%; height: 1px; width: 10%; }
+.vx-hint {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: calc(74px + 0.9rem);
+  translate: -50% 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 0.95rem;
+  border: 1px solid var(--bd);
+  border-radius: 99px;
+  background: rgba(5, 5, 5, 0.62);
+  backdrop-filter: blur(8px);
+  font: 500 0.68rem "Space Grotesk", sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--silver);
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+.vx-hint svg { color: var(--primary-hi); }
+.vx-hint.is-gone { opacity: 0; }
+@media (hover: none), (pointer: coarse) {
+  .vx-hint, .vx-lens, .vx-ring { display: none; }
+}
+.vx-scan {
+  position: absolute;
+  top: 10%;
+  bottom: 14%;
+  left: 0;
+  width: 2px;
+  opacity: 0.55;
+  pointer-events: none;
+  background: linear-gradient(transparent, rgba(160, 205, 255, 0.9), transparent);
+  box-shadow: 0 0 26px 6px var(--primary-glow);
+  animation: vx-scan 8s ease-in-out infinite;
+}
+@keyframes vx-scan {
+  0%, 100% { transform: translateX(6%); opacity: 0; }
+  12%, 88% { opacity: 0.55; }
+  50% { transform: translateX(calc(var(--vx-w) * 0.94)); }
+}
+
+/* ---------- technical overlay ---------- */
+.vx-art {
+  overflow: visible;
+  filter: drop-shadow(0 0 5px var(--primary-glow));
+}
+.vx-sys {
+  opacity: 0;
+}
+.vx-sys.is-on {
+  opacity: 1;
+}
+.vx-ln {
+  fill: none;
+  stroke: var(--primary-hi);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.vx-fl {
+  fill: rgba(0, 117, 251, 0.06);
+}
+.vx-thin {
+  stroke-width: 1;
+  opacity: 0.85;
+}
+.vx-strong {
+  stroke: #cfe6ff;
+  stroke-width: 2;
+}
+.vx-dash {
+  stroke-dasharray: 5 6;
+}
+.vx-con path {
+  fill: none;
+  stroke: var(--silver);
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+.vx-con path.is-on {
+  stroke-dashoffset: 0;
+}
+
+/* ---------- hotspots + chips (translate property keeps GSAP's transform free) ---------- */
+.vx-hot {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  translate: -50% -50%;
+  opacity: 0;
+  pointer-events: none;
+}
+.vx-hot.is-on {
+  opacity: 1;
+}
+.vx-hot-dot {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(5, 5, 5, 0.78);
+  border: 1.5px solid var(--silver);
+  color: #fff;
+  font: 700 0.72rem "Space Grotesk", sans-serif;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  box-shadow: 0 0 18px var(--primary-glow);
+}
+.vx-hot-ring {
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  border: 1px solid var(--primary-hi);
+  box-shadow: 0 0 16px var(--primary-glow), inset 0 0 12px var(--primary-soft);
+}
+.vx-hot-ring::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid var(--primary-hi);
+  animation: vx-pulse 2.4s ease-out infinite;
+}
+@keyframes vx-pulse {
+  from { transform: scale(1); opacity: 0.8; }
+  to { transform: scale(1.9); opacity: 0; }
+}
+.vx-chip {
+  position: absolute;
+  opacity: 0;
+  padding: 0.32rem 0.7rem;
+  border: 1px solid var(--bd);
+  border-radius: 99px;
+  background: rgba(5, 5, 5, 0.72);
+  backdrop-filter: blur(8px);
+  font: 500 0.66rem "Space Grotesk", sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--silver);
+  pointer-events: none;
+}
+.vx-chip b {
+  color: var(--primary-hi);
+  margin-right: 0.35rem;
+}
+.vx-chip--left { translate: -100% -50%; }
+.vx-chip--right { translate: 0 -50%; }
+.vx-chip.is-on { opacity: 1; }
+
+/* ---------- HUD: description panel + progress ---------- */
+.vx-hud {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  padding: 0 max(4.8rem, calc((100% - 1240px) / 2)) 1.8rem max(1.25rem, calc((100% - 1240px) / 2));
+}
+.vx-infos {
+  display: grid;
+  width: min(410px, 100%);
+  padding: 1.25rem 1.4rem 1.3rem;
+  border: 1px solid var(--bd);
+  border-radius: 18px;
+  background: rgba(5, 5, 5, 0.64);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+.vx-info {
+  grid-area: 1 / 1;
+  opacity: 0;
+  pointer-events: none;
+}
+.vx-info.is-on { opacity: 1; pointer-events: auto; }
+.vx-info-n {
+  font: 500 0.68rem "Space Grotesk", sans-serif;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--tx2);
+}
+.vx-info-n span {
+  color: var(--primary-hi);
+  margin-right: 0.4rem;
+}
+.vx-info h3 {
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  margin: 0.45rem 0 0.5rem;
+}
+.vx-info p:last-child {
+  color: var(--tx2);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.vx-prog {
+  display: grid;
+  gap: 0.8rem;
+  justify-items: end;
+  width: min(360px, 100%);
+  padding: 0.9rem 1.1rem 1rem;
+  border: 1px solid var(--bd);
+  border-radius: 16px;
+  background: rgba(5, 5, 5, 0.64);
+  backdrop-filter: blur(14px);
+}
+.vx-count {
+  font: 500 0.8rem "Space Grotesk", sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--silver);
+}
+.vx-count b {
+  color: var(--primary-hi);
+  font-weight: 700;
+}
+.vx-bar {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.16);
+}
+.vx-bar i {
+  display: block;
+  height: 100%;
+  background: var(--primary-hi);
+  box-shadow: 0 0 10px var(--primary-glow);
+  transform-origin: 0 50%;
+}
+.vx-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.vx-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--bd);
+  background: rgba(5, 5, 5, 0.6);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s;
+}
+.vx-btn:hover:not(:disabled) {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+}
+.vx-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.vx-dots {
+  display: flex;
+  gap: 0.55rem;
+  list-style: none;
+  padding: 0;
+}
+.vx-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--silver);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s, border-color 0.25s;
+}
+.vx-dot.is-on {
+  background: var(--primary-hi);
+  border-color: var(--primary-hi);
+  transform: scale(1.3);
+}
+.vx-btn:focus-visible,
+.vx-dot:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* clear ending: the scene dissolves into the page background as the pin releases */
+.vx-end {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 70px;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(transparent, var(--bg));
+}
+
+/* ---------- phones + portrait tablets: car fills the space above a compact panel (camera zooms to each hotspot) ---------- */
+@media (max-width: 860px) {
+  .vx-scene {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .vx-plat { box-shadow: none; }
+  .vx-hint { display: none; }
+  .vx-frame {
+    --vx-nav: 66px;
+    position: relative;
+    inset: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+    margin-top: var(--vx-nav);
+  }
+  .vx-cam { --vx-w: 100%; }
+  .vx-grid { top: 40% !important; }
+  .vx-xray {
+    -webkit-mask-image: radial-gradient(ellipse 24% 42% at var(--hx) var(--hy), #000 46%, transparent 100%);
+    mask-image: radial-gradient(ellipse 24% 42% at var(--hx) var(--hy), #000 46%, transparent 100%);
+  }
+  .vx-hud {
+    position: relative;
+    inset: auto;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+    padding: 0.4rem 4.2rem 1rem 1rem; /* right gap clears the site's floating action buttons */
+  }
+  .vx-infos { width: 100%; max-width: 560px; padding: 0.9rem 1rem 0.95rem; border-radius: 14px; }
+  .vx-info h3 { font-size: 1.15rem; margin: 0.3rem 0; }
+  .vx-info p:last-child { font-size: 0.84rem; line-height: 1.5; }
+  .vx-prog {
+    width: 100%;
+    max-width: 560px;
+    padding: 0.65rem 0.85rem;
+    border-radius: 12px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    justify-items: stretch;
+    gap: 0.45rem 0.8rem;
+  }
+  .vx-count {
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+  .vx-bar { grid-column: 1 / -1; grid-row: 2; }
+  .vx-ctrl { justify-self: end; gap: 0.5rem; }
+  .vx-btn { width: 36px; height: 36px; }
+  .vx-dots { display: none; }
+  .vx-chip,
+  .vx-con { display: none; } /* simplified on phones: hotspot + highlight only, the title lives in the panel */
+  .vx-hot { width: 22px; height: 22px; }
+  .vx-hot-dot { font-size: 0.5rem; border-width: 1px; }
+  .vx-hot-ring { inset: -6px; }
+  .vx-ln { stroke-width: 1.1; }
+}
+/* short phones: tighten the panel so the car keeps its room */
+@media (max-width: 860px) and (max-height: 700px) {
+  .vx-info-n { display: none; }
+  .vx-info h3 { font-size: 1.05rem; margin: 0 0 0.25rem; }
+  .vx-info p:last-child { font-size: 0.78rem; line-height: 1.42; }
+  .vx-infos { padding: 0.7rem 0.85rem; }
+  .vx-hud { gap: 0.5rem; padding-bottom: 0.75rem; }
+}
+@media (max-width: 380px) {
+  .vx-hud { padding-right: 3.9rem; }
+  .vx-intro .lead { font-size: 0.95rem; }
+}
+/* landscape phones: car on the left, panel stacked on the right */
+@media (max-width: 960px) and (max-height: 520px) and (orientation: landscape) {
+  .vx-scene { flex-direction: row; flex-wrap: wrap; align-items: stretch; }
+  .vx-frame {
+    --vx-nav: 58px;
+    flex: 1 1 58%;
+    margin-top: var(--vx-nav);
+    -webkit-mask-image: linear-gradient(90deg, #000 86%, transparent);
+    mask-image: linear-gradient(90deg, #000 86%, transparent);
+  }
+  .vx-hud {
+    flex: 0 0 40%;
+    justify-content: flex-end;
+    margin-top: var(--vx-nav);
+    padding: 0.4rem 4.2rem 0.7rem 0.4rem;
+    gap: 0.45rem;
+  }
+  .vx-info-n { display: none; }
+  .vx-info h3 { font-size: 1rem; margin: 0 0 0.2rem; }
+  .vx-info p:last-child { font-size: 0.74rem; line-height: 1.4; }
+  .vx-infos { padding: 0.6rem 0.8rem; }
+  .vx-prog { padding: 0.5rem 0.7rem; }
+}
+
+/* ---------- reduced motion: no pin, no looping effects; stage follows the controls ---------- */
+.vx--static .vx-scene {
+  height: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.5rem;
+}
+.vx--static .vx-frame { position: relative; inset: auto; height: auto; }
+.vx--static .vx-cam {
+  position: relative;
+  width: min(100%, 1400px);
+  margin-inline: auto;
+  transform: none !important;
+}
+.vx--static .vx-hud { position: relative; padding-top: 1.2rem; }
+.vx--static .vx-xray,
+.vx--static .vx-bar,
+.vx--static .vx-end { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .vx-scan,
+  .vx-floorglow,
+  .vx-hot-ring::after { animation: none; }
+  .vx-scan { display: none; }
+}

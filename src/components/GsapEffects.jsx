@@ -21,7 +21,7 @@ export default function GsapEffects({ page }) {
         { from: { rotationX: 10, y: 80, transformPerspective: 1200, transformOrigin: "50% 0" }, to: { rotationX: 0, y: 0 }, d: 1.6 },
         { from: { skewY: 3, y: 90 }, to: { skewY: 0, y: 0 }, d: 1.5 },
       ];
-      const blocks = Array.from(document.querySelectorAll(SEL)).filter((el) => !el.parentElement.closest(SEL) && !el.matches(".hero,.chero"));
+      const blocks = Array.from(document.querySelectorAll(SEL)).filter((el) => !el.parentElement.closest(SEL) && !el.matches(".hero,.chero,.vx"));
       blocks.forEach((el, i) => {
         const s = STYLES[i % STYLES.length];
         gsap.fromTo(el, s.from, { ...s.to, duration: s.d, ease: "power3.out", clearProps: "transform,clipPath,transformOrigin", scrollTrigger: { trigger: el, start: "top 86%", once: true } });

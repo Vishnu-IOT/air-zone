@@ -48,7 +48,8 @@ export function Navbar() {
       <header className={"nav" + (s ? " scrolled" : "") + (o ? " open" : "")}>
         <div className="nav-in container">
           <Link to="/" className="brand" aria-label="Air Zone Automobile home">
-            <img src="/images/logo.png" alt="Air Zone Automobile" />
+            <img src="/images/branding/splash-screen-logo.png" alt="Air Zone Automobile" />
+            <img src="/images/branding/nav-name-logo.png" alt="Air Zone Automobile" />
           </Link>
           <nav className="nav-links" aria-label="Primary">
             {links.map(([t, l]) => (
@@ -83,11 +84,20 @@ export function Navbar() {
             transition={{ duration: 0.2 }}
           >
             {links.map(([t, l]) => (
-              <NavLink key={t} to={t} end={t === "/"} onClick={() => setO(false)}>
+              <NavLink
+                key={t}
+                to={t}
+                end={t === "/"}
+                onClick={() => setO(false)}
+              >
                 {l}
               </NavLink>
             ))}
-            <Link className="btn" to="/book-a-quote" onClick={() => setO(false)}>
+            <Link
+              className="btn"
+              to="/book-a-quote"
+              onClick={() => setO(false)}
+            >
               Book a Service
             </Link>
           </motion.div>
