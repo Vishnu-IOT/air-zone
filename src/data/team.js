@@ -7,7 +7,7 @@ export const teamMembers = [
     name: "K. R. Prajith",
     designation: "Owner",
     category: "Leadership",
-    image: "/images/team/owner.webp",
+    image: "/images/team/owner.png",
     bio: "Air Zone (also known as Air Zone Car AC Works) is a car air conditioning repair and service center located near BPL Koottupatha, Chandranagar, Palakkad. Established around 2009–2011.",
     placeholder: true,
   },

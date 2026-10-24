@@ -5,7 +5,7 @@ import { gsap, ScrollTrigger } from "../lib/gsap.js";
 import Lines from "./Lines.jsx";
 import Reveal from "./Reveal.jsx";
 import { ART } from "./ShowroomArt.jsx";
-import { SHOWROOM_CAR as CAR, SHOWROOM_STAGES as STAGES } from "../data/showroom.js";
+import { SHOWROOM_CAR as CAR, SHOWROOM_STAGES as STAGES, SHOWROOM_FIT as FIT } from "../data/showroom.js";
 
 // Interactive Showroom / Vehicle Explorer.
 // Ownership: GSAP owns everything inside the pinned scene (hotspots, connectors, overlays, panels, camera, X-ray reveal, progress bar).
@@ -85,6 +85,9 @@ export default function Showroom() {
 
         const tl = gsap.timeline({ defaults: { ease: "power2.out" } }); // gsap.config({force3D:true}) in lib/gsap.js keeps the GPU layer after every tween (no end-of-move blur/flicker)
         tl.set(cam, { x: camX(0), y: camY(0), scale: camS(0) }, 0); // re-measured on every refresh (resize / rotation)
+        // The X-ray window must also be re-pinned on stage 01 at every refresh. Without this it fell back to its CSS default (50% / 50%,
+        // the middle of the car = the front brake disc), so the AC stage revealed the brake skeleton instead of the condenser.
+        tl.set(xray, { ...rev(0), opacity: 0.9 }, 0);
         for (let i = 0; i < N; i++) {
           if (i > 0) {
             const t = i - 0.1;
@@ -230,7 +233,7 @@ export default function Showroom() {
                 const Art = ART[s.id];
                 return (
                   <g key={s.id} className={"vx-sys" + (i === active ? " is-on" : "")} data-sys={s.id}>
-                    {s.overlay ? <image href={s.overlay} x="0" y="0" width={W} height={H} /> : <Art />}
+                    {s.overlay ? <image href={s.overlay} x="0" y="0" width={W} height={H} /> : <g transform={FIT.transform}><Art /></g>}
                   </g>
                 );
               })}
