@@ -8,7 +8,7 @@ export const teamMembers = [
     designation: "Owner",
     category: "Leadership",
     image: "/images/team/owner.png",
-    bio: "Air Zone (also known as Air Zone Car AC Works) is a car air conditioning repair and service center located near BPL Koottupatha, Chandranagar, Palakkad. Established around 2009–2011.",
+    bio: "In 2008, he established Airzone with a vision to deliver reliable automotive services and quality workmanship. Today, his experience, technical knowledge, and commitment to customer satisfaction continue to shape Air Zone Automobile.",
     placeholder: true,
   },
   {

@@ -72,68 +72,61 @@ export function AboutHero() {
     </section>
   );
 }
-const A = [
-  [
-    "01",
-    "Understand",
-    "Stage: Listen",
-    "Every vehicle has its own service requirements. We begin with the vehicle and the customer’s concerns.",
-    [
-      ["Customer concerns", "Heard first"],
-      ["Vehicle details", "Noted"],
-    ],
-  ],
-  [
-    "02",
-    "Inspect",
-    "Stage: Assess",
-    "Careful assessment helps identify the work that may be needed, and what can wait.",
-    [
-      ["Inspection", "Structured"],
-      ["Findings", "Recorded"],
-    ],
-  ],
-  [
-    "03",
-    "Recommend",
-    "Stage: Advise",
-    "Clear, practical recommendations focused on the vehicle’s condition.",
-    [
-      ["Explanation", "Plain language"],
-      ["Next steps", "Agreed with you"],
-    ],
-  ],
+const J = [
+  {
+    years: "1995\u20132002",
+    phase: "Phase 01",
+    title: "Early Professional Experience \u2014 Coimbatore",
+    text: "Our founder began his professional journey in the automotive industry in Coimbatore, working at Air Tech Car AC. During these formative years, he gained valuable hands-on experience in automotive air conditioning, vehicle maintenance, and troubleshooting. This period helped him develop a strong technical foundation and a practical understanding of automotive systems.",
+    foot: "Technical Foundations // Hands-On Expertise",
+    code: "IND",
+  },
+  {
+    years: "2002\u20132008",
+    phase: "Phase 02",
+    title: "International Experience \u2014 BMW \u2014 Dubai",
+    text: "Driven by a passion for automotive technology, he moved to Dubai, where he worked as a BMW technician for six years. Working with premium vehicles broadened his expertise in automotive diagnostics, fault identification, maintenance, and repair techniques. This international experience strengthened his technical capabilities and deepened his understanding of professional automotive service standards.",
+    foot: "BMW Expertise // International Standards",
+    code: "UAE",
+  },
+  {
+    years: "2008\u2013Present",
+    phase: "Phase 03",
+    title: "A Vision Takes Shape — The Beginning of Airzone",
+    text: "With years of practical experience in Coimbatore and international exposure in Dubai, our founder took an important step in his career by establishing Airzone in 2008. Combining technical knowledge, industry experience, and a passion for vehicle care, he set out to build a trusted name in automotive services. His journey continues to inspire Air Zone Automobile's commitment to quality workmanship, reliable service, and customer satisfaction.",
+    foot: "A Vision Realized // A Legacy Begins",
+    code: "Est. 08",
+  },
 ];
-export function Approach() {
+export function Journey() {
   return (
     <section className="bs-sec">
       <div className="container">
-        <SecHead n="02" title="Our approach" tag="Care process" />
-        <Lines as="h2" lines={["Our approach to", "automotive care"]} />
+        <SecHead
+          n="02"
+          title="Our journey"
+          tag="Chronology of practice // Airzone heritage"
+        />
+        <Lines as="h2" lines={["Our Journey."]} />
         <Reveal variant="blur">
           <p className="lead narrow">
-            Every vehicle has its own service requirements. Our approach begins
-            with understanding the vehicle, listening to the customer's
-            concerns, and identifying the work that may be needed. We aim to
-            make the service process clear, practical, and focused on the
-            vehicle's condition.
+            A deliberate trajectory forged across decades of bench practice,
+            international technical calibration, and the founding of Airzone.
           </p>
         </Reveal>
-        <div className="bs-cols">
-          {A.map(([n, t, st, d, sp], i) => (
-            <Reveal variant="flip" as="article" key={n} delay={i * 0.1}>
-              <span className="stage">{st}</span>
-              <div className="bignum">{n}</div>
-              <h3>{t}</h3>
-              <p>{d}</p>
-              <dl className="specs">
-                {sp.map(([k, v]) => (
-                  <div key={k}>
-                    <dt>{k}</dt>
-                    <dd>{v}</dd>
-                  </div>
-                ))}
-              </dl>
+        <div className="bs-journey">
+          {J.map((j, i) => (
+            <Reveal variant="flip" as="article" key={j.years} delay={i * 0.1}>
+              <header>
+                <span className="jy">{j.years}</span>
+                <span className="jp">{j.phase}</span>
+              </header>
+              <h3>{j.title}</h3>
+              <p>{j.text}</p>
+              <footer>
+                <span>{j.foot}</span>
+                <span>{j.code}</span>
+              </footer>
             </Reveal>
           ))}
         </div>
@@ -143,6 +136,11 @@ export function Approach() {
 }
 const K = [
   [
+    "MaxiIM IM608 PRO Diagnostics",
+    "Diagnostics",
+    "MaxiIM IM608 PRO OBD2 Diagnostics Systems and fault-finding procedures differ by make, model and year.",
+  ],
+  [
     "Manufacturer specifications",
     "Protocol",
     "Service intervals and fluids are set by the vehicle’s maker and differ between models.",
@@ -151,11 +149,6 @@ const K = [
     "Correct parts and fluids",
     "Compliance",
     "Components and oil grades vary between makes, models and engines.",
-  ],
-  [
-    "Vehicle-specific diagnostics",
-    "Diagnostics",
-    "Systems and fault-finding procedures differ by make, model and year.",
   ],
   [
     "Maintenance intervals",
@@ -200,7 +193,7 @@ export function VehicleSpecific() {
             <Mask
               dir="right"
               src="/images/about/vehicle-specific.webp"
-              fb="/images/services/diagnostics.png"
+              fb="/images/services/obd2-scanner1.jpg"
               alt="Brake and suspension inspection (illustrative)"
             />
             <div className="datasheet">
@@ -217,7 +210,13 @@ export function VehicleSpecific() {
           </div>
           <div className="items">
             {K.map(([t, tag, d], i) => (
-              <Reveal variant="right" as="div" className="item" key={t} delay={i * 0.08}>
+              <Reveal
+                variant="right"
+                as="div"
+                className="item"
+                key={t}
+                delay={i * 0.08}
+              >
                 <header>
                   <h3>
                     <span className="n">0{i + 1}</span>
@@ -280,7 +279,13 @@ export function Inspection() {
         </Reveal>
         <div className="bs-steps">
           {S.map(([n, t, tag, d, out], i) => (
-            <Reveal variant="zoom" as="article" className="step" key={n} delay={i * 0.12}>
+            <Reveal
+              variant="zoom"
+              as="article"
+              className="step"
+              key={n}
+              delay={i * 0.12}
+            >
               <header>
                 <span>Step {n}</span>
                 <span>{tag}</span>
@@ -341,7 +346,13 @@ export function Preventive() {
             </Reveal>
             <div className="sys">
               {C.map(([k, t, d], i) => (
-                <Reveal variant="flip" as="div" className="item" key={k} delay={i * 0.06}>
+                <Reveal
+                  variant="flip"
+                  as="div"
+                  className="item"
+                  key={k}
+                  delay={i * 0.06}
+                >
                   <header>
                     <small>[{k}]</small>
                     <small>SYS-0{i + 1}</small>

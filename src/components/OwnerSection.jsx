@@ -35,16 +35,21 @@ export default function OwnerSection() {
             <span className="chip-tag">{o.designation}</span>
             {o.placeholder && (
               <span className="badge">
-                Placeholder · confirm before publishing
+                Automotive Diagnostics Specialist
               </span>
             )}
             <Lines as="h2" lines={[o.name]} />
             <p className="role">{o.designation}</p>
             <Reveal variant="right" delay={0.1}>
               <p className="lead">
-                Behind Air Zone Automobile is a commitment to thoughtful vehicle
-                care, clear communication, and attention to the details that
-                matter.
+                With extensive experience in the automotive industry, our
+                founder built a strong technical foundation through years of
+                hands-on work in Coimbatore and Dubai. From 1995 to 2002, he
+                gained valuable automotive experience in Coimbatore, including
+                expertise in car air conditioning at Air Tech Car AC. He then
+                worked for six years as a BMW technician in Dubai, gaining
+                international experience in premium vehicle servicing and
+                diagnostics.
               </p>
               <p className="lead">{o.bio}</p>
               <blockquote className="bs-quote">

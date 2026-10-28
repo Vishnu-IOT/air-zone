@@ -15,13 +15,13 @@ import { homeFaqs, whyPoints } from "../data/content.js";
 import Lines from "../components/Lines.jsx";
 import { ArrowUpRight } from "lucide-react";
 const pick = (s) => services.find((x) => x.slug === s);
-const big = pick("ac-repair");
+const big = pick("obd2-fault-code-scan");
 const rest = [
+  "ac-repair",
   "general-service",
   "diagnostics",
   "engine-performance",
   "brakes",
-  "preventive",
 ]
   .map(pick)
   .filter(Boolean);
@@ -122,7 +122,7 @@ export default function Home() {
         <div className="fs-grid">
           <Reveal variant="left" className="fs-big">
             <Link to={"/services/" + big.slug} data-cursor="View">
-              <SmartImage src={big.image} alt={big.title} />
+              <SmartImage src='/images/services/obd2-scanner3.png' alt={big.title} />
               <div className="fs-over">
                 <span className="label">Signature · {big.category}</span>
                 <h3>{big.title}</h3>

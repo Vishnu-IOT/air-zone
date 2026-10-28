@@ -9,6 +9,154 @@ const S = (o) => ({
 });
 export const services = [
   S({
+    slug: "obd2-fault-code-scan",
+    title: "OBD-II Fault Code Scanning",
+    image: "obd2-scanner.png",
+    category: "Diagnostics",
+    cta: "Book OBD-II Scan",
+    duration: "30–60 minutes",
+    short:
+      "OBD2 Diagnostics And Key Fob Programmer With JVCI Tool Bundle and investigate dashboard warning lights.",
+    overview:
+      "MaxiIM IM608 PRO is the most advanced and unique all in one key programming and diagnostic tool that combines advanced key programming, all systems diagnostics, and advanced services in one Android based 10.1-inch touchscreen tablet. It is equipped with XP400 PRO key programmer and MaxiFlash ECU programmer to provide complete coverage of IMMO and programming functions. IM608 PRO provides you with all special functions to quickly diagnose all modules for the majority of the makes and models on the market.",
+    why: "A fault code identifies a detected condition, not necessarily a failed component. Interpreting the code correctly helps avoid unnecessary part replacement.",
+    symptoms: [
+      "Check-engine warning light",
+      "Engine running roughly",
+      "Reduced performance or limp mode",
+      "Powerful OE level diagnostics for more than 80 US, Asian and European makes and models",
+      "Android Operating System for fast boot-up and multitasking",
+      "Powerful combination of key programming/all system diagnostics/advanced maintenance services",
+      "Smart Mode for guided and automated key learning",
+      "Expert Mode for advanced key learning",
+
+    ],
+    checklist: [
+      "Connect a compatible diagnostic scanner",
+      "Read available stored and pending fault codes",
+      "Review freeze-frame data where available",
+      "Record findings and recommended next steps",
+    ],
+    includes: [
+      "IMMO ECU reset/adaptation, refresh/coding",
+      "Read PIN/CS (all key lost) , key generation, key learning, remote learning",
+      "Supported fault-code scan",
+      "Explanation of retrieved codes",
+      "Advanced maintenance services including EPB, DPF, SAS, Oil reset, and BMS.",
+      "Recommendations for further testing",
+    ],
+    steps: [
+      "Confirm vehicle details and customer concerns",
+      "Connect the scanner and retrieve available codes",
+      "Review results and explain next steps",
+    ],
+    faqs: [
+      [
+        "Does a fault code identify the exact failed part?",
+        "Not always. Additional testing may be required to confirm the root cause.",
+      ],
+      [
+        "Can every vehicle be scanned?",
+        "Coverage depends on vehicle compatibility, protocol and scanner capabilities.",
+      ],
+    ],
+    related: ["diagnostics", "live-data-diagnostics", "engine-performance"],
+  }),
+  S({
+    slug: "ac-repair",
+    title: "Car AC Inspection & Repair",
+    image: "ac inspection.png",
+    category: "Climate",
+    cta: "Book AC Repair",
+    duration: "2–4 hours",
+    short:
+      "Cooling checks,Leak detection, refrigerant recovery and repair for weak, noisy or inconsistent climate control.",
+    overview:
+      "We assess cooling performance, airflow and the components in the climate system, then explain what repair, if any, is needed. Luxury cars often use dual-zone systems and electronic controls that need vehicle-specific procedures.",
+    why: "A struggling AC works components harder and affects comfort and cabin air quality.",
+    symptoms: [
+      "Weak or warm cooling",
+      "Unusual noises or smells",
+      "Poor airflow",
+      "Cooling that comes and goes",
+    ],
+    checklist: [
+      "Vent temperature and airflow",
+      "Compressor operation",
+      "Condenser and cooling fan",
+      "Cabin filter and controls",
+    ],
+    includes: [
+      "Performance test",
+      "Component diagnostics",
+      "Repair or replacement after approval",
+    ],
+    steps: [
+      "Test cooling performance",
+      "Inspect system components",
+      "Estimate, approval and repair",
+    ],
+    faqs: [
+      [
+        "Why is my AC blowing warm air?",
+        "Causes range from low refrigerant to compressor, fan or electrical faults; inspection identifies which.",
+      ],
+      [
+        "Do luxury cars need different parts?",
+        "Often, yes: components and refrigerant specs vary by vehicle.",
+      ],
+    ],
+    related: ["ac-gas-leak", "battery-electrical"],
+  }),
+  S({
+    slug: "full-system-ecu-diagnostics",
+    title: "Full-System ECU Diagnostics",
+    image: "ecu-diagnostics.png",
+    category: "Diagnostics",
+    cta: "Request ECU Diagnostics",
+    duration: "1–3 hours",
+    short:
+      "Scan supported electronic control modules to investigate faults across multiple vehicle systems.",
+    overview:
+      "Advanced diagnostics checks accessible electronic control modules beyond basic engine OBD-II scanning. Depending on the vehicle and equipment, this may include ABS, airbag, transmission, body control and other supported systems.",
+    why: "Modern vehicles use multiple electronic modules. A fault outside the engine management system may require enhanced vehicle-specific diagnostics.",
+    symptoms: [
+      "ABS or stability-control warning",
+      "Airbag or SRS warning",
+      "Transmission warning or abnormal shifting",
+      "Multiple electrical or system warnings",
+    ],
+    checklist: [
+      "Confirm vehicle and scanner compatibility",
+      "Scan accessible supported modules",
+      "Review module-specific fault codes",
+      "Identify communication faults where supported",
+    ],
+    includes: [
+      "Supported multi-module scan",
+      "Fault-code review and explanation",
+      "Diagnostic findings report",
+      "Recommendations for further investigation",
+    ],
+    steps: [
+      "Confirm reported symptoms and vehicle details",
+      "Scan available electronic control modules",
+      "Review faults and identify additional tests",
+      "Explain results and repair options",
+    ],
+    faqs: [
+      [
+        "Can the scanner access every ECU?",
+        "No. Access depends on vehicle compatibility, equipment and available functions.",
+      ],
+      [
+        "Does an ECU fault code mean the ECU is defective?",
+        "No. Wiring, power supply, sensors or network communication can also cause faults.",
+      ],
+    ],
+    related: ["obd2-fault-code-scan", "diagnostics", "battery-electrical"],
+  }),
+  S({
     slug: "general-service",
     title: "General Car Service",
     image: "car-service.jpg",
@@ -145,52 +293,6 @@ export const services = [
       ],
     ],
     related: ["battery-electrical", "engine-performance"],
-  }),
-  S({
-    slug: "ac-repair",
-    title: "Car AC Inspection & Repair",
-    image: "ac inspection.png",
-    category: "Climate",
-    cta: "Book AC Repair",
-    duration: "2–4 hours",
-    short:
-      "Cooling checks,Leak detection, refrigerant recovery and repair for weak, noisy or inconsistent climate control.",
-    overview:
-      "We assess cooling performance, airflow and the components in the climate system, then explain what repair, if any, is needed. Luxury cars often use dual-zone systems and electronic controls that need vehicle-specific procedures.",
-    why: "A struggling AC works components harder and affects comfort and cabin air quality.",
-    symptoms: [
-      "Weak or warm cooling",
-      "Unusual noises or smells",
-      "Poor airflow",
-      "Cooling that comes and goes",
-    ],
-    checklist: [
-      "Vent temperature and airflow",
-      "Compressor operation",
-      "Condenser and cooling fan",
-      "Cabin filter and controls",
-    ],
-    includes: [
-      "Performance test",
-      "Component diagnostics",
-      "Repair or replacement after approval",
-    ],
-    steps: [
-      "Test cooling performance",
-      "Inspect system components",
-      "Estimate, approval and repair",
-    ],
-    faqs: [
-      [
-        "Why is my AC blowing warm air?",
-        "Causes range from low refrigerant to compressor, fan or electrical faults; inspection identifies which.",
-      ],
-      [
-        "Do luxury cars need different parts?",
-        "Often, yes: components and refrigerant specs vary by vehicle.",
-      ],
-    ],
-    related: ["ac-gas-leak", "battery-electrical"],
   }),
   //   S({
   //     slug: "ac-gas-leak",
@@ -445,54 +547,6 @@ export const services = [
     related: ["general-service", "oil-filter"],
   }),
 
-  S({
-    slug: "obd2-fault-code-scan",
-    title: "OBD-II Fault Code Scanning",
-    image: "obd2-scanner.jpg",
-    category: "Diagnostics",
-    cta: "Book OBD-II Scan",
-    duration: "30–60 minutes",
-    short:
-      "Read supported diagnostic trouble codes and investigate dashboard warning lights.",
-    overview:
-      "An OBD-II scan retrieves diagnostic trouble codes from supported vehicle systems. The technician reviews available codes and freeze-frame information, explains the findings and recommends further testing where necessary.",
-    why: "A fault code identifies a detected condition, not necessarily a failed component. Interpreting the code correctly helps avoid unnecessary part replacement.",
-    symptoms: [
-      "Check-engine warning light",
-      "Engine running roughly",
-      "Reduced performance or limp mode",
-      "Recent warning light or intermittent fault",
-    ],
-    checklist: [
-      "Connect a compatible diagnostic scanner",
-      "Read available stored and pending fault codes",
-      "Review freeze-frame data where available",
-      "Record findings and recommended next steps",
-    ],
-    includes: [
-      "Supported fault-code scan",
-      "Explanation of retrieved codes",
-      "Diagnostic findings summary",
-      "Recommendations for further testing",
-    ],
-    steps: [
-      "Confirm vehicle details and customer concerns",
-      "Connect the scanner and retrieve available codes",
-      "Review results and explain next steps",
-    ],
-    faqs: [
-      [
-        "Does a fault code identify the exact failed part?",
-        "Not always. Additional testing may be required to confirm the root cause.",
-      ],
-      [
-        "Can every vehicle be scanned?",
-        "Coverage depends on vehicle compatibility, protocol and scanner capabilities.",
-      ],
-    ],
-    related: ["diagnostics", "live-data-diagnostics", "engine-performance"],
-  }),
-
   // S({
   //   slug: "live-data-diagnostics",
   //   title: "Live Data & Sensor Diagnostics",
@@ -541,55 +595,6 @@ export const services = [
   //   ],
   //   related: ["obd2-fault-code-scan", "diagnostics", "engine-performance"],
   // }),
-
-  S({
-    slug: "full-system-ecu-diagnostics",
-    title: "Full-System ECU Diagnostics",
-    image: "ecu-diagnostics.png",
-    category: "Diagnostics",
-    cta: "Request ECU Diagnostics",
-    duration: "1–3 hours",
-    short:
-      "Scan supported electronic control modules to investigate faults across multiple vehicle systems.",
-    overview:
-      "Advanced diagnostics checks accessible electronic control modules beyond basic engine OBD-II scanning. Depending on the vehicle and equipment, this may include ABS, airbag, transmission, body control and other supported systems.",
-    why: "Modern vehicles use multiple electronic modules. A fault outside the engine management system may require enhanced vehicle-specific diagnostics.",
-    symptoms: [
-      "ABS or stability-control warning",
-      "Airbag or SRS warning",
-      "Transmission warning or abnormal shifting",
-      "Multiple electrical or system warnings",
-    ],
-    checklist: [
-      "Confirm vehicle and scanner compatibility",
-      "Scan accessible supported modules",
-      "Review module-specific fault codes",
-      "Identify communication faults where supported",
-    ],
-    includes: [
-      "Supported multi-module scan",
-      "Fault-code review and explanation",
-      "Diagnostic findings report",
-      "Recommendations for further investigation",
-    ],
-    steps: [
-      "Confirm reported symptoms and vehicle details",
-      "Scan available electronic control modules",
-      "Review faults and identify additional tests",
-      "Explain results and repair options",
-    ],
-    faqs: [
-      [
-        "Can the scanner access every ECU?",
-        "No. Access depends on vehicle compatibility, equipment and available functions.",
-      ],
-      [
-        "Does an ECU fault code mean the ECU is defective?",
-        "No. Wiring, power supply, sensors or network communication can also cause faults.",
-      ],
-    ],
-    related: ["obd2-fault-code-scan", "diagnostics", "battery-electrical"],
-  }),
 
   S({
     slug: "diagnostic-resets-coding",

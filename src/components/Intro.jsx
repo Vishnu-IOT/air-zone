@@ -14,10 +14,10 @@ import Reveal from "./Reveal.jsx";
 //   [Users, "Customer-Focused Service", "Clear explanations before additional work."],
 // ];
 const P = [
-  [Gauge, "20+", "Years of Experience"],
-  [Cpu, "1,000+", "Happy Customers"],
+  [Gauge, "16+", "Years of Experience"],
+  [Users, "1,000+", "Happy Customers"],
   [Snowflake, "15+", "Car Brands Serviced"],
-  [Users, "2,500+", "Services Completed"],
+  [Cpu, "2,500+", "Services Completed"],
 ];
 export default function Intro() {
   const ref = useRef(null);

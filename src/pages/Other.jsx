@@ -8,7 +8,7 @@ import Lines from "../components/Lines.jsx";
 import OwnerSection from "../components/OwnerSection.jsx";
 import {
   AboutHero,
-  Approach,
+  Journey,
   VehicleSpecific,
   Inspection,
   Preventive,
@@ -26,7 +26,7 @@ export const About = () => (
     {/* <Folio top /> */}
     <AboutHero />
     <OwnerSection />
-    <Approach />
+    <Journey />
     <VehicleSpecific />
     <Inspection />
     <Preventive />
